@@ -17,17 +17,25 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-fallingblocks.cpp
 
 OTHER_FILES += qml/harbour-fallingblocks.qml \
-    qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
+    qml/*.js \
+    qml/cover/*.qml \
+    harbour/fallingblocks/* \
     rpm/harbour-fallingblocks.changes.in \
     rpm/harbour-fallingblocks.spec \
     rpm/harbour-fallingblocks.yaml \
     translations/*.ts \
-    harbour-fallingblocks.desktop
+    harbour-fallingblocks.desktop \
+    qml/pages/Main.qml \
+    qml/pages/World.qml
+
+QML_IMPORT_PATH = .
+fallingblocks.files = harbour
+fallingblocks.path = /usr/share/$${TARGET}
+INSTALLS += fallingblocks
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/harbour-fallingblocks-de.ts
+TRANSLATIONS += translations/harbour-fallingblocks-de.ts \
+                translations/harbour-fallingblocks-ja.ts
 

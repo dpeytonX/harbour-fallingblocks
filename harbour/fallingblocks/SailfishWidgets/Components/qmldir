@@ -1,0 +1,6 @@
+module harbour.fallingblocks.SailfishWidgets.Components
+DescriptiveLabel 1.1 DescriptiveLabel.qml
+Heading 1.1 Heading.qml
+InformationalLabel 1.1 InformationalLabel.qml
+StandardListView 1.1 StandardListView.qml
+StandardCover 1.1 StandardCover.qml

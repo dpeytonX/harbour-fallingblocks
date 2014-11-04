@@ -31,11 +31,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
+import "Logger.js" as Console
 
 ApplicationWindow
 {
-    initialPage: Component { FirstPage { } }
+    initialPage: Component { Main { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    Component.onCompleted: Console.LOG_PRIORITY = Console.TRACE
 }
 
 
