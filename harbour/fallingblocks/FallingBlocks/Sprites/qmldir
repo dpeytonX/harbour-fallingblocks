@@ -1,3 +1,8 @@
 module harbour.fallingblocks.FallingBlocks.Sprites
 Block 1.0 Block.qml
+BlockA 1.0 BlockA.qml
+BlockB 1.0 BlockB.qml
+BlockC 1.0 BlockC.qml
 FallingBlock 1.0 FallingBlock.qml
+LoggingBlock 1.0 LoggingBlock.qml
+PlayerBlock 1.0 PlayerBlock.qml

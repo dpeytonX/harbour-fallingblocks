@@ -1,9 +1,9 @@
 import QtQuick 2.0
-import QtQml 2.0
 import Sailfish.Silica 1.0
-import "../Logger.js" as Console
-import "game/UIConstants.js" as UIConstants
-import "game/objects"
+import harbour.fallingblocks.FallingBlocks 1.0
+import harbour.fallingblocks.FallingBlocks.Controllers 1.0
+import harbour.fallingblocks.FallingBlocks.Sprites 1.0
+import harbour.fallingblocks.QmlLogger 2.0
 
 Page {
     backNavigation: !playerControl.pressed
@@ -12,31 +12,18 @@ Page {
     property int appStatus: Qt.application.state
     property bool gameStarted: false
 
-    BlockA {
-        animate: gameStarted
-        speed: UIConstants.speed
-        y: 0
-        x: parent.width / 2
-
-        onYChanged: {
-            if(y > parent.height) {
-                destroy()
-            }
-        }
-    }
-
     PlayerBlock {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Theme.paddingLarge
         x: (parent.width - width) / 2
 
         MouseArea {
-            id: playerControl
             anchors.fill: parent
             drag.target: parent
             drag.axis: Drag.XAxis
             drag.minimumX: 0
             drag.maximumX: world.width - parent.width
+            id: playerControl
             onPressed: {
                 Console.debug("World: player pressed")
             }
@@ -44,6 +31,13 @@ Page {
                 Console.debug("World: player released")
             }
         }
+    }
+
+    CreationController {
+        animate: gameStarted
+        interval: UIConstants.interval
+        speed: UIConstants.speed
+        running: gameStarted
     }
 
     onAppStatusChanged: {
