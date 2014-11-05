@@ -1,2 +1,3 @@
 module harbour.fallingblocks.FallingBlocks.Sprites
-Sprite 1.0 Sprite.qml
+Block 1.0 Block.qml
+FallingBlock 1.0 FallingBlock.qml

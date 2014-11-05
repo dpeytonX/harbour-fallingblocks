@@ -19,14 +19,15 @@ SOURCES += src/harbour-fallingblocks.cpp
 OTHER_FILES += qml/harbour-fallingblocks.qml \
     qml/*.js \
     qml/cover/*.qml \
+    qml/pages/* \
+    qml/pages/game/* \
+    qml/pages/game/objects/* \
     harbour/fallingblocks/* \
     rpm/harbour-fallingblocks.changes.in \
     rpm/harbour-fallingblocks.spec \
     rpm/harbour-fallingblocks.yaml \
     translations/*.ts \
-    harbour-fallingblocks.desktop \
-    qml/pages/Main.qml \
-    qml/pages/World.qml
+    harbour-fallingblocks.desktop
 
 QML_IMPORT_PATH = .
 fallingblocks.files = harbour

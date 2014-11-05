@@ -37,23 +37,11 @@ ApplicationWindow
 {
     property bool gameStatus: false
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
-    initialPage: Component {
-        Main {
-            id: main
-            onGameStartedChanged: gameStarted = gameStatus
-        }
-    }
-
-    World {
-        id: world
-        onGameStartedChanged: gameStatus = gameStarted
-    }
-
-    onGameStatusChanged: Console.debug("Game Status changed: " + gameStatus ? "started" : "paused")
+    initialPage: Component { Main {} }
 
     Component.onCompleted:  {
         Console.LOG_PRIORITY = Console.TRACE
-        pageStack.pushAttached(world)
+        pageStack.pushAttached(Qt.resolvedUrl("pages/World.qml"))
     }
 }
 
