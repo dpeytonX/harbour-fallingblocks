@@ -35,9 +35,26 @@ import "Logger.js" as Console
 
 ApplicationWindow
 {
-    initialPage: Component { Main { } }
+    property bool gameStatus: false
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
-    Component.onCompleted: Console.LOG_PRIORITY = Console.TRACE
+    initialPage: Component {
+        Main {
+            id: main
+            onGameStartedChanged: gameStarted = gameStatus
+        }
+    }
+
+    World {
+        id: world
+        onGameStartedChanged: gameStatus = gameStarted
+    }
+
+    onGameStatusChanged: Console.debug("Game Status changed: " + gameStatus ? "started" : "paused")
+
+    Component.onCompleted:  {
+        Console.LOG_PRIORITY = Console.TRACE
+        pageStack.pushAttached(world)
+    }
 }
 
 
