@@ -25,8 +25,10 @@ Item {
                 break
             }
 
+        Console.trace("BlockFactory: found position " + position)
         if(!!position) {
             var qml = UIConstants.blocks[position] + ".qml"
+            Console.trace("BlockFactory: qml " + qml)
             var component = Qt.createComponent(qml)
             loader.create(component, parent, properties)
             component.statusChanged.connect(loader.create)

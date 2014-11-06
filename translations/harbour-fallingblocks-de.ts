@@ -30,10 +30,6 @@
 <context>
     <name>Help</name>
     <message>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>How to play</source>
         <translation type="unfinished"></translation>
     </message>
@@ -47,6 +43,26 @@
     </message>
     <message>
         <source>Move your player by pressing and holding the stationary block at the bottom of the screen. You may move left and right in order to align yourself to the falling block above. Upon successful alignment you will increase your score. However, touching the &apos;evil block&apos; will descrease your score and the number of lives you have. The game ends once all lives are depleted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slowest block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slightly faster</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fastest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Takes a life</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
