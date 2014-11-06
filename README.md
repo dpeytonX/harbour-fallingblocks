@@ -18,7 +18,9 @@ You can contribute in one of two ways:
 </ul>
 <p>
 <img src="bitcoinaddy.png" />
+<p>
 <code>1PFqgHeGrtXLYvMge2mTT1FohKuuoKmUN5</code>
+
 
 <br>
 Copyright ©2014 Dametrious Peyton. All Rights Reserved
