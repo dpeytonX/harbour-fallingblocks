@@ -12,10 +12,6 @@ Dialog {
         width: parent.width - Theme.paddingLarge * 2
         x: Theme.paddingLarge
 
-        PageHeader {
-            title: qsTr("Help");
-        }
-
         Heading {text: qsTr("How to play")}
 
         DescriptiveLabel {
