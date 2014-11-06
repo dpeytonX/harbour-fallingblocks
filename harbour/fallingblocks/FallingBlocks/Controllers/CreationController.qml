@@ -5,6 +5,7 @@ import harbour.fallingblocks.QmlLogger 2.0
 
 Timer {
     property bool animate
+    property Item spriteParent
     property string spritePath: "../Sprites/"
     signal create(Component component)
     signal objectCompleted(variant object)
@@ -13,9 +14,9 @@ Timer {
 
     onCreate: {
         if(!!component && component.status === Component.Ready) {
-            var o = component.createObject(parent)
+            var o = component.createObject(spriteParent)
             o.animate = animate
-            o.x = MathHelper.randomInt(0, parent.width - o.width)
+            o.x = MathHelper.randomInt(0, spriteParent.width - o.width)
             o.y = 0
             o.yChanged.connect(function() {
                 if(o.y > o.parent.height)

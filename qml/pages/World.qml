@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.fallingblocks.SailfishWidgets.Components 1.1
 import harbour.fallingblocks.FallingBlocks 1.0
 import harbour.fallingblocks.FallingBlocks.Controllers 1.0
 import harbour.fallingblocks.FallingBlocks.Sprites 1.0
@@ -11,15 +12,35 @@ Page {
 
     property int appStatus: !!Qt.application.state ? Qt.application.state :
                                                      (Qt.application.active ? 0 : 1) //VM compat
-    property bool gameStarted: false
-    property bool initialized: false
+    property bool gameStarted: (!!Qt.ApplicationActive && appStatus === Qt.ApplicationActive || appStatus === 0)
+            && status === PageStatus.Active && !gameEnded
+    property bool gameEnded: false
     property int score: 0
+    property int lives: 3 //This should eventually come from application settings
+
+    Column {
+        width: parent.width - Theme.paddingLarge * 2
+        y: Theme.paddingLarge
+        x: Theme.paddingLarge
+        z: 1000
+
+        InformationalLabel {
+            anchors.right: parent.right
+            text: score + "  " + qsTr("Score")
+        }
+
+        InformationalLabel {
+            anchors.right: parent.right
+            text: lives + "  " + qsTr("Lives")
+        }
+    }
 
     CreationController {
         animate: gameStarted
         id: createLoop
         interval: UIConstants.interval
         repeat: true
+        spriteParent: world
         triggeredOnStart: true
 
         onObjectCompleted: {
@@ -32,12 +53,20 @@ Page {
             object.collisionDetected.connect(function() {
                 Console.debug("World: collision detected " + object)
                 score += object.points
+                lives -= object.objectName === UIConstants.blockNameEvil? 1 : 0
                 object.animate = false
                 object.visible = false
                 object.destroy()
             })
             object.collision.start()
         }
+    }
+
+    Heading {
+        anchors.centerIn: parent
+        id: gameOver
+        text: qsTr("Game Over")
+        visible: gameEnded
     }
 
     PlayerBlock {
@@ -51,7 +80,9 @@ Page {
             drag.axis: Drag.XAxis
             drag.minimumX: 0
             drag.maximumX: world.width - parent.width
+            enabled: !gameEnded
             id: playerControl
+
             onPressed: {
                 Console.debug("World: player pressed")
             }
@@ -61,20 +92,27 @@ Page {
         }
     }
 
-    onAppStatusChanged: {
-        Console.info("World: Application active state is " + appStatus)
-        gameStarted = (!!Qt.ApplicationActive && appStatus === Qt.ApplicationActive || appStatus === 0)
-                && status === PageStatus.Active
-    }
+    onAppStatusChanged: Console.info("World: Application active state is " + appStatus)
 
     onGameStartedChanged: {
         Console.debug("World: Game Status: " + gameStarted)
-        initialized = initialized ? true : gameStarted
         gameStarted ? createLoop.start() : createLoop.stop()
+    }
+
+    onLivesChanged: {
+        Console.debug("World: Lives " + lives)
+        if(!lives) {
+            // Game Over
+            gameStarted = false
+            gameEnded = true
+        }
     }
 
     onStatusChanged: {
         gameStarted = status === PageStatus.Active
         Console.debug("World: new status is " + status)
     }
+
+    Component.onCompleted: Console.debug("World: created")
+    Component.onDestruction: Console.debug("World: destroyed")
 }

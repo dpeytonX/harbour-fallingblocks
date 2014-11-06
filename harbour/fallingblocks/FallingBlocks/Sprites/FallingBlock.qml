@@ -39,7 +39,5 @@ Block {
 
     onCollisionDetected: Console.trace("FallingBlock: collision detected " + this)
 
-    Component.onDestruction: {
-        Console.trace("LoggingBlock: block destroyed")
-    }
+    Component.onDestruction: Console.trace("LoggingBlock: block destroyed")
 }

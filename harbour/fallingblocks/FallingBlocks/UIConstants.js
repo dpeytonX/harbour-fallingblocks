@@ -1,6 +1,10 @@
 .pragma library
 
 var animationRate = 100
+var blockNameEasy = "easy"
+var blockNameMedium = "medium"
+var blockNameHard = "hard"
+var blockNameEvil = "evil"
 var collisionInterval = 50
 var intervalEasy = 1500
 var intervalMedium = 1200

@@ -19,4 +19,19 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>World</name>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lives</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Game Over</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
