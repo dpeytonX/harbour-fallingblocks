@@ -13,6 +13,7 @@ Page {
                                                      (Qt.application.active ? 0 : 1) //VM compat
     property bool gameStarted: false
     property bool initialized: false
+    property int score: 0
 
     CreationController {
         animate: gameStarted
@@ -24,27 +25,18 @@ Page {
         onObjectCompleted: {
             //Create a new collision object
             Console.debug("World: Creating a collision detector for " + object)
-            collisionTimer.createTimer(player, object)
-        }
-    }
-
-    CollisionController {
-        id: collisionTimer
-
-        onObjectCompleted: {
-            collision.timer.interval = UIConstants.collisionInterval
-            collision.timer.repeat = true
-            collision.timer.running = true
-            collision.timer.triggeredOnStart = true
-            collision.collisionDetected.connect(function() {
-                Console.debug("World: collision detected " + collision)
-                collision.stop()
-                collision.target.animate = false
-                collision.target.visible = false
-                collision.target.destroy()
-                collision.destroy()
+            object.collision.interval = UIConstants.collisionInterval
+            object.collision.repeat = true
+            object.collision.triggeredOnStart = true
+            object.collision.source = player
+            object.collisionDetected.connect(function() {
+                Console.debug("World: collision detected " + object)
+                score += object.points
+                object.animate = false
+                object.visible = false
+                object.destroy()
             })
-            gameStartedChanged.connect(function() {if(!!collision && !!collision.timer) collision.timer.running = gameStarted})
+            object.collision.start()
         }
     }
 

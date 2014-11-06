@@ -1,3 +1,2 @@
 module harbour.fallingblocks.FallingBlocks.Controllers
 CreationController 1.0 CreationController.qml
-CollisionController 1.0 CollisionController.qml

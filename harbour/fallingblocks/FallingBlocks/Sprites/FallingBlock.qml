@@ -8,7 +8,10 @@ Block {
 
     property bool animate: false
     property real animationRate: UIConstants.animationRate
+    property alias collision: collisionDetector
+    property int points
     property real speed
+    signal collisionDetected(Item source, Item target)
 
     Timer {
         id: fallingTimer
@@ -21,7 +24,20 @@ Block {
         }
     }
 
-    onAnimateChanged: Console.verbose("FallingBlock: animation state is " + animate)
+    CollisionDetector {
+        id: collisionDetector
+        target: parent
+
+        onCollisionDetected: parent.collisionDetected(source, target)
+    }
+
+    onAnimateChanged: {
+        Console.verbose("FallingBlock: animation state is " + animate)
+        if(collisionDetector.target)
+            animate ? collisionDetector.start() : collisionDetector.stop()
+    }
+
+    onCollisionDetected: Console.trace("FallingBlock: collision detected " + this)
 
     Component.onDestruction: {
         Console.trace("LoggingBlock: block destroyed")

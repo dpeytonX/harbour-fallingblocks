@@ -11,7 +11,7 @@ ApplicationWindow
     initialPage: Component { Main {} }
 
     Component.onCompleted:  {
-        Console.LOG_PRIORITY = Console.TRACE
+        Console.LOG_PRIORITY = Console.DEBUG
         pageStack.pushAttached(Qt.resolvedUrl("pages/World.qml"))
     }
 }

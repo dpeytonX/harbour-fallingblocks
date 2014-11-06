@@ -3,5 +3,6 @@ import harbour.fallingblocks.FallingBlocks 1.0
 
 FallingBlock {
     color: "blue"
+    points: UIConstants.pointsMedium
     speed: UIConstants.speedMedium
 }
