@@ -1,5 +1,6 @@
 module harbour.fallingblocks.FallingBlocks.Sprites
 Block 1.0 Block.qml
+BlockFactory 1.0 BlockFactory.qml
 CollisionDetector 1.0 CollisionDetector.qml
 EasyBlock 1.0 EasyBlock.qml
 EvilBlock 1.0 EvilBlock.qml
