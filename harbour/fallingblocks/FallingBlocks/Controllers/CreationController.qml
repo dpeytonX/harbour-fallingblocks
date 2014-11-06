@@ -1,43 +1,52 @@
 import QtQuick 2.0
 import harbour.fallingblocks.SailfishWidgets.JS 1.1
+import harbour.fallingblocks.SailfishWidgets.Utilities 1.1
 import harbour.fallingblocks.FallingBlocks.Sprites 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
-Timer {
+Item {
     property bool animate
+    property alias interval: timer.interval
+    property alias repeat: timer.repeat
+    property alias running: timer.running
     property Item spriteParent
     property string spritePath: "../Sprites/"
-    signal create(Component component)
+    property alias triggeredOnStart: timer.triggeredOnStart
     signal objectCompleted(variant object)
+    signal start()
+    signal stop();
 
-    onAnimateChanged: Console.debug("CreationController: animation changed to " + animate)
-
-    onCreate: {
-        if(!!component && component.status === Component.Ready) {
-            var o = component.createObject(spriteParent)
-            o.animate = animate
-            o.x = MathHelper.randomInt(0, spriteParent.width - o.width)
-            o.y = 0
-            o.yChanged.connect(function() {
-                if(o.y > o.parent.height)
-                    o.destroy()
+    DynamicLoader {
+        id: loader
+        onObjectCompleted: {
+            object.animate = animate
+            object.x = MathHelper.randomInt(0, spriteParent.width - object.width)
+            object.y = 0
+            object.yChanged.connect(function() {
+                if(object.y > object.parent.height)
+                    object.destroy()
             })
-            animateChanged.connect(function() {o.animate = animate})
-            Console.debug("CreationController: creating block " + o);
-            objectCompleted(o)
-        } else {
-            Console.log("CreationController: Error loading component " + component.errorString())
+            animateChanged.connect(function() {object.animate = animate})
+            Console.debug("CreationController: object constructed " + object);
+            parent.objectCompleted(object)
+        }
+
+        onError: Console.log("CreationController: could not create component " + errorString)
+    }
+
+    Timer {
+        id: timer
+
+        onTriggered: {
+            var blocks = ["EasyBlock", "MediumBlock", "HardBlock", "EvilBlock"];
+            var qml = spritePath + blocks[MathHelper.randomInt(0, 4)] + ".qml"
+            var component = Qt.createComponent(qml)
+            loader.create(component, spriteParent, {})
+            component.statusChanged.connect(loader.create)
         }
     }
 
-    onObjectCompleted: Console.debug("CreationController: object completed " + object)
-
-    onTriggered: {
-        var blocks = ["EasyBlock", "MediumBlock", "HardBlock", "EvilBlock"];
-        var component = Qt.createComponent(spritePath +
-                                           blocks[MathHelper.randomInt(0, 4)] +
-                                           ".qml")
-        create(component)
-        component.statusChanged.connect(create)
-    }
+    onAnimateChanged: Console.debug("CreationController: animation changed to " + animate)
+    onStart: timer.start()
+    onStop: timer.stop()
 }

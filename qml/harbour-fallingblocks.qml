@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.fallingblocks.SailfishWidgets.Utilities 1.1
 import harbour.fallingblocks.QmlLogger 2.0
 import "pages"
 
@@ -12,9 +13,22 @@ ApplicationWindow
     property variant currentWorld
     property bool gameEnded: false
     signal pushWorld()
-    signal createWorld(Component world)
-    signal worldCompleted(variant world)
     signal restart()
+
+    DynamicLoader {
+        id: loader
+        onObjectCompleted: {
+            object.gameEndedChanged.connect(function() {
+                gameEnded = object.gameEnded
+            })
+            currentWorld = object
+            Console.debug("app: world completed " + currentWorld)
+            pageStack.pushAttached(currentWorld)
+            pageStack.busyChanged.connect(restart)
+        }
+
+        onError: Console.log("app: could not create component " + errorString)
+    }
 
     onRestart: {
         if(!pageStack.busy && pageStack.currentPage !== currentWorld && gameEnded) {
@@ -25,30 +39,10 @@ ApplicationWindow
         }
     }
 
-    onCreateWorld: {
-        if(!!world && world.status === Component.Ready) {
-            var o = world.createObject(parent)
-            o.gameEndedChanged.connect(function() {
-                gameEnded = o.gameEnded
-            })
-            Console.debug("app: creating world " + o);
-            worldCompleted(o)
-        } else {
-            Console.log("app: Error loading component " + world.errorString())
-        }
-    }
-
     onPushWorld: {
         var component = Qt.createComponent("pages/World.qml")
-        createWorld(component)
-        component.statusChanged.connect(createWorld)
-    }
-
-    onWorldCompleted: {
-        Console.debug("app: world completed " + world)
-        currentWorld = world
-        pageStack.pushAttached(world)
-        pageStack.busyChanged.connect(restart)
+        loader.create(component, parent, {})
+        component.statusChanged.connect(loader.create)
     }
 
     Component.onCompleted:  {
