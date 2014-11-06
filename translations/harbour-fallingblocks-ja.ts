@@ -28,6 +28,29 @@
     </message>
 </context>
 <context>
+    <name>Help</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>How to play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scoring</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>It&apos;s simple! Catch as many blocks as you can while avoiding the mysterious &apos;evil block&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move your player by pressing and holding the stationary block at the bottom of the screen. You may move left and right in order to align yourself to the falling block above. Upon successful alignment you will increase your score. However, touching the &apos;evil block&apos; will descrease your score and the number of lives you have. The game ends once all lives are depleted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Main</name>
     <message>
         <source>Start</source>
@@ -35,6 +58,10 @@
     </message>
     <message>
         <source>Falling blocks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

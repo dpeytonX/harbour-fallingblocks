@@ -20,8 +20,6 @@ OTHER_FILES += qml/harbour-fallingblocks.qml \
     qml/*.js \
     qml/cover/*.qml \
     qml/pages/* \
-    qml/pages/game/* \
-    qml/pages/game/objects/* \
     harbour/fallingblocks/* \
     rpm/harbour-fallingblocks.changes.in \
     rpm/harbour-fallingblocks.spec \

@@ -28,4 +28,5 @@ TextArea {
     font.family: Theme.fontFamilyHeading
     font.pixelSize: Theme.fontSizeSmall
     readOnly: true
+    width: parent.width
 }

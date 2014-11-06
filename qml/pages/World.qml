@@ -67,6 +67,7 @@ Page {
         id: gameOver
         text: qsTr("Game Over")
         visible: gameEnded
+        z: 1000
     }
 
     PlayerBlock {

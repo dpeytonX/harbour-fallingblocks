@@ -5,16 +5,25 @@ import harbour.fallingblocks.SailfishWidgets.Components 1.1
 //TODO: change page header text on game status
 //TODO: add help page
 Page {
-    Column {
+    SilicaListView {
         anchors.fill: parent
-        x: Theme.paddingLarge
-        y: Theme.paddingLarge
 
-        PageHeader { title: qsTr("Start") }
-    }
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Help")
+                onClicked: help.open()
+            }
+        }
 
-    Heading {
-        anchors.centerIn: parent
-        text: qsTr("Falling blocks")
+        header: PageHeader { title: qsTr("Start") }
+
+        Heading {
+            anchors.centerIn: parent
+            text: qsTr("Falling blocks")
+        }
+
+        Help {
+            id: help
+        }
     }
 }
