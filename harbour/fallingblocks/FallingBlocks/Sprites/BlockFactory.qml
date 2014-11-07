@@ -14,7 +14,7 @@ Item {
             parent.objectCompleted(object)
         }
 
-        onError: Console.log("BlockFactory: could not create component " + errorString)
+        onError: Console.error("BlockFactory: could not create component " + errorString)
     }
 
     onGenerate: {

@@ -16,8 +16,7 @@ CONFIG += sailfishapp
 
 SOURCES += src/harbour-fallingblocks.cpp
 
-OTHER_FILES += qml/harbour-fallingblocks.qml \
-    qml/*.js \
+OTHER_FILES += qml/* \
     qml/cover/*.qml \
     qml/pages/* \
     harbour/fallingblocks/* \
@@ -37,4 +36,7 @@ INSTALLS += fallingblocks
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/harbour-fallingblocks-de.ts \
                 translations/harbour-fallingblocks-ja.ts
+
+RESOURCES += \
+    images.qrc
 

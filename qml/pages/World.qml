@@ -11,9 +11,9 @@ Page {
     id: world
 
     property int appStatus: !!Qt.application.state ? Qt.application.state :
-                                                     (Qt.application.active ? 0 : 1) //VM compat
-    property bool gameStarted: (!!Qt.ApplicationActive && appStatus === Qt.ApplicationActive || appStatus === 0)
-            && status === PageStatus.Active && !gameEnded
+                                                     (Qt.application.active ? 1 : 0) //VM compat
+    property bool gameStarted: ((!!Qt.ApplicationActive && appStatus === Qt.ApplicationActive) || appStatus === 1)
+                               && status === PageStatus.Active && !gameEnded
     property bool gameEnded: false
     property int score: 0
     property int lives: 3 //This should eventually come from application settings
@@ -93,7 +93,11 @@ Page {
         }
     }
 
-    onAppStatusChanged: Console.info("World: Application active state is " + appStatus)
+    onAppStatusChanged: {
+        Console.info("World: Application active state is " + appStatus +
+                     ", Qt.ApplicationActive " + Qt.ApplicationActive +
+                     ", Qt.application.state " + Qt.application.state)
+    }
 
     onGameStartedChanged: {
         Console.debug("World: Game Status: " + gameStarted)
@@ -107,11 +111,6 @@ Page {
             gameStarted = false
             gameEnded = true
         }
-    }
-
-    onStatusChanged: {
-        gameStarted = status === PageStatus.Active
-        Console.debug("World: new status is " + status)
     }
 
     Component.onCompleted: Console.debug("World: created")

@@ -3,19 +3,27 @@ import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.Components 1.1
 
 //TODO: change page header text on game status
-//TODO: add help page
 Page {
+    property bool inProgress: false
+    signal startNewGame(bool immediate)
+    signal goToWorld()
+
     SilicaListView {
         anchors.fill: parent
 
         PullDownMenu {
-            MenuItem {
+            StandardMenuItem {
+                text: qsTr("New Game")
+                onClicked: startNewGame(true)
+            }
+
+            StandardMenuItem {
                 text: qsTr("Help")
                 onClicked: help.open()
             }
         }
 
-        header: PageHeader { title: qsTr("Start") }
+        header: PageHeader { title: inProgress ? qsTr("In Progress") : qsTr("Start") }
 
         Heading {
             anchors.centerIn: parent
@@ -26,4 +34,6 @@ Page {
             id: help
         }
     }
+
+    onGoToWorld: pageStack.navigateForward()
 }

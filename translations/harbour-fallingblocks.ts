@@ -4,6 +4,10 @@
 <context>
     <name>CoverPage</name>
     <message>
+        <source>In Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Falling Blocks</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15,31 +19,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Scoring</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>It&apos;s simple! Catch as many blocks as you can while avoiding the mysterious &apos;evil block&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Move your player by pressing and holding the stationary block at the bottom of the screen. You may move left and right in order to align yourself to the falling block above. Upon successful alignment you will increase your score. However, touching the &apos;evil block&apos; will descrease your score and the number of lives you have. The game ends once all lives are depleted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Slowest block</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Slightly faster</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fastest</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Takes a life</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -59,6 +43,37 @@
     </message>
     <message>
         <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Score</name>
+    <message>
+        <source>Scoring</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slowest block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slightly faster</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fastest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Takes a life</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
