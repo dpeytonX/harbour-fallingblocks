@@ -12,5 +12,6 @@ outputformats = HTML
 sourcedirs = SailfishWidgets
 sources.fileextensions += *.qml
 sources.fileextensions += *.qdoc
+sources.fileextensions += *.js
 
 syntaxhighlighting = true
