@@ -1,6 +1,3 @@
 [submodule "thirdparty/QmlLogger"]
 	path = thirdparty/QmlLogger
 	url = https://github.com/prplmnky/QmlLogger
-[submodule "thirdparty/SailfishWidgets"]
-	path = thirdparty/SailfishWidgets
-	url = https://github.com/prplmnky/sailfish-widgets

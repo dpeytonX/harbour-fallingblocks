@@ -6,6 +6,7 @@
 Name:       harbour-fallingblocks
 
 # >> macros
+%define __provides_exclude_from ^%{_datadir}/.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
