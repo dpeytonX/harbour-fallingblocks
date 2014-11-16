@@ -18,15 +18,17 @@ Item {
     }
 
     onGenerate: {
-        var position;
-        for(var i = 0; i < UIConstants.blocks.length; ++i)
+        var position = -1;
+        Console.debug("BlockFactory: Searching for objectName " + objectName)
+        for(var i = 0; i < UIConstants.blocks.length; ++i) {
             if(UIConstants.blocks[i] === objectName) {
                 position = i
                 break
             }
+        }
 
         Console.trace("BlockFactory: found position " + position)
-        if(!!position) {
+        if(position != -1) {
             var qml = UIConstants.blocks[position] + ".qml"
             Console.trace("BlockFactory: qml " + qml)
             var component = Qt.createComponent(qml)

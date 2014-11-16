@@ -35,7 +35,11 @@ Item {
     Timer {
         id: timer
 
-        onTriggered: factory.generate(UIConstants.blocks[MathHelper.randomInt(0, UIConstants.blocks.length)], spriteParent, {})
+        onTriggered: {
+            var index = MathHelper.randomInt(0, UIConstants.blocks.length)
+            Console.debug("CreationController: create block type " + index)
+            factory.generate(UIConstants.blocks[index], spriteParent, {})
+        }
     }
 
     onAnimateChanged: Console.debug("CreationController: animation changed to " + animate)

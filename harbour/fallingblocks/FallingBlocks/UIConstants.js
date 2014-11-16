@@ -1,16 +1,16 @@
 .pragma library
 
-var animationRate = 100
+var animationRate = 100 // Changes how fast blocks fall
 var blockNameEasy = "EasyBlock"
 var blockNameMedium = "MediumBlock"
 var blockNameHard = "HardBlock"
 var blockNameEvil = "EvilBlock"
 var blocks = [blockNameEasy, blockNameMedium, blockNameHard, blockNameEvil]
 var collisionInterval = 50
-var intervalEasy = 1500
-var intervalMedium = 1200
-var intervalHard = 800
-var intervalSuper = 500
+var intervalEasy = animationRate
+var intervalMedium = animationRate - 10
+var intervalHard = animationRate - 50
+var intervalSuper = animationRate - 60
 var interval = intervalEasy
 var pointsEasy = 100
 var pointsMedium = 500

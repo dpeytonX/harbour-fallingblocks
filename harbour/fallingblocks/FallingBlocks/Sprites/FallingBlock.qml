@@ -13,6 +13,13 @@ Block {
     property real speed
     signal collisionDetected(Item source, Item target)
 
+    Behavior on y {
+        PropertyAnimation {
+            duration: animationRate
+            easing.type: Easing.Linear
+        }
+    }
+
     Timer {
         id: fallingTimer
         running: animate
