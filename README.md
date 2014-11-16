@@ -5,7 +5,7 @@ Falling Blocks game for Sailfish OS.
 
 This project is GPLv3 unless otherwise indicated on the file itself. Files with other licenses are copyrighted to their respective owners.
 <p>
-Version 1.0
+Version 1.1
 
 <h2>Contribute</h2>
 
