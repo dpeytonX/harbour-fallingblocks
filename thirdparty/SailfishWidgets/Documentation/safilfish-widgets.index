@@ -13,6 +13,18 @@
             <qmlproperty threadsafety="unspecified" name="title" fullname="PageColumn::title" href="qml-pagecolumn.html#title-prop" access="public" status="commendable" type="alias" attached="false" writable="true"/>
         </qmlclass>
         <qmlclass name="Paragraph" href="qml-paragraph.html" access="public" status="commendable" since="5.0" title="Paragraph" fulltitle="Paragraph" subtitle="" brief="Can be used to add detailed information in the UI."/>
+        <qmlclass name="RadioGroup" href="qml-radiogroup.html" access="public" status="commendable" since="5.0" title="RadioGroup" fulltitle="RadioGroup" subtitle="" brief="Togglable set of TextSwitch components">
+            <qmlproperty threadsafety="unspecified" name="defaultIndex" fullname="RadioGroup::defaultIndex" href="qml-radiogroup.html#defaultIndex-prop" access="public" status="commendable" type="TextSwitch" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="radio1" fullname="RadioGroup::radio1" href="qml-radiogroup.html#radio1-prop" access="public" status="commendable" type="alias" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="radio2" fullname="RadioGroup::radio2" href="qml-radiogroup.html#radio2-prop" access="public" status="commendable" type="alias" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="radio3" fullname="RadioGroup::radio3" href="qml-radiogroup.html#radio3-prop" access="public" status="commendable" type="alias" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="radio4" fullname="RadioGroup::radio4" href="qml-radiogroup.html#radio4-prop" access="public" status="commendable" type="alias" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="radioMargin" fullname="RadioGroup::radioMargin" href="qml-radiogroup.html#radioMargin-prop" access="public" status="commendable" type="real" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="radiosVisible" fullname="RadioGroup::radiosVisible" href="qml-radiogroup.html#radiosVisible-prop" access="public" status="commendable" type="int" attached="false" writable="false"/>
+            <qmlsignal threadsafety="unspecified" name="radioClicked" fullname="RadioGroup::radioClicked" href="qml-radiogroup.html#radioClicked-signal" access="public" status="commendable"/>
+            <qmlsignal threadsafety="unspecified" name="radioStateChanged" fullname="RadioGroup::radioStateChanged" href="qml-radiogroup.html#radioStateChanged-signal" access="public" status="commendable"/>
+            <qmlsignal threadsafety="unspecified" name="reset" fullname="RadioGroup::reset" href="qml-radiogroup.html#reset-signal" access="public" status="commendable"/>
+        </qmlclass>
         <page name="Settings" href="settings-module.html" access="private" status="internal" subtype="module" title="" fulltitle="" subtitle=""/>
         <qmlclass name="StandardCover" href="qml-standardcover.html" access="public" status="commendable" since="5.0" title="StandardCover" fulltitle="StandardCover" subtitle="" brief="Default cover with an image and a short title">
             <qmlproperty threadsafety="unspecified" name="coverTitle" fullname="StandardCover::coverTitle" href="qml-standardcover.html#coverTitle-prop" access="public" status="commendable" type="string" attached="false" writable="true"/>

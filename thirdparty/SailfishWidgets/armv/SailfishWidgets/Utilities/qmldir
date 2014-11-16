@@ -1,2 +1,2 @@
-module harbour.yourAppName.SailfishWidgets.Utilities
+module SailfishWidgets.Utilities
 DynamicLoader 1.1 DynamicLoader.qml
