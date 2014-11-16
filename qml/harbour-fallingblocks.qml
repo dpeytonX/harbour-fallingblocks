@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.Utilities 1.1
+import harbour.fallingblocks.SailfishWidgets.Settings 1.1
 import harbour.fallingblocks.QmlLogger 2.0
 import "cover"
 import "pages"
@@ -34,6 +35,14 @@ ApplicationWindow
     property bool userInitiated: false
     signal pushWorld()
     signal restart()
+
+    ApplicationSettings {
+        id: settings
+        applicationName: "harbour-fallingblocks"
+        fileName: "settings"
+
+        property string dummy: "welcome"
+    }
 
     DynamicLoader {
         id: loader
@@ -74,7 +83,7 @@ ApplicationWindow
     }
 
     Component.onCompleted:  {
-        Console.LOG_PRIORITY = Console.DEBUG
+        Console.LOG_PRIORITY = Console.CRITICAL
         pushWorld()
         pageStack.busyChanged.connect(restart)
     }

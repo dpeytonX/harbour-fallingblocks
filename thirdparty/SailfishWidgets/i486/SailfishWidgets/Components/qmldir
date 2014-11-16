@@ -1,4 +1,4 @@
-module SailfishWidgets.Components
+module harbour.fallingblocks.SailfishWidgets.Components
 PageColumn 1.1 PageColumn.qml
 Paragraph 1.1 Paragraph.qml
 Heading 1.1 Heading.qml
