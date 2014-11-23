@@ -1,8 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.QmlLogger 2.0
-import harbour.fallingblocks.SailfishWidgets.Components 1.1
-import harbour.fallingblocks.SailfishWidgets.JS 1.1
+import harbour.fallingblocks.SailfishWidgets.Components 1.2
+import harbour.fallingblocks.SailfishWidgets.JS 1.2
 
 StandardCover {
     coverTitle: qsTr("Falling Blocks")
