@@ -13,19 +13,15 @@ Page {
     PageColumn {
         title: qsTr("Settings")
 
-        Subtext {text: qsTr("Starting Lives")}
+        Heading {text: qsTr("Mechanics")}
 
         ComboBox {
             id: livesSelect
-            label: qsTr("Lives")
+            label: qsTr("Starting Lives")
             menu: ContextMenu {
                 Repeater {
                     model: [qsTr("3"), qsTr("5"), qsTr("Infinite")]
                     StandardMenuItem {text: modelData}
-
-                    Component.onCompleted: {
-                        livesSelect.currentIndex = !!settings ? settings.lives : livesSelect.currentIndex
-                    }
                 }
             }
             width: settingsPage.width //workaround for menu item display being cut
@@ -35,7 +31,22 @@ Page {
                 settings.lives = currentIndex
             }
         }
+
+        Heading {text: qsTr("Miscellaneous")}
+
+        TextSwitch {
+            id: swipe
+            text: qsTr("Disable Page Navigation in Game")
+
+            onCheckedChanged: {
+                Console.info("Settings: disable swipe set to " + checked)
+                settings.disableSwipeToHome = checked
+            }
+        }
     }
 
-    onSettingsChanged: livesSelect.currentIndex = settings.lives
+    onSettingsChanged: {
+        livesSelect.currentIndex = settings.lives
+        swipe.checked = settings.disableSwipeToHome
+    }
 }

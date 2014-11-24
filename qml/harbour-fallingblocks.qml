@@ -44,6 +44,7 @@ ApplicationWindow
         fileName: "settings"
 
         property int lives: UIConstants.settingsLivesDefault
+        property bool disableSwipeToHome: false
     }
 
     DynamicLoader {

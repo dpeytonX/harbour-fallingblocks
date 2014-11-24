@@ -10,6 +10,7 @@ import harbour.fallingblocks.QmlLogger 2.0
 Page {
     property int appStatus: !!Qt.application.state ? Qt.application.state :
                                                      (Qt.application.active ? 1 : 0) //VM compat
+    property bool forceBackNavigation: false
     property bool gameStarted: ((!!Qt.ApplicationActive && appStatus === Qt.ApplicationActive) || appStatus === 1)
                                && status === PageStatus.Active && !gameEnded
     property bool initialized: false
@@ -20,7 +21,7 @@ Page {
 
     signal settingsLivesChanged();
 
-    backNavigation: !playerControl.pressed
+    backNavigation: forceBackNavigation || (!playerControl.pressed && (!!settings ? !settings.disableSwipeToHome : true))
     id: world
 
     Column {
@@ -109,7 +110,9 @@ Page {
                      ", Qt.application.state " + Qt.application.state)
         if(!gameEnded && !gameStarted && pageStack.currentPage === world) {
             console.debug("World: navigating to title")
+            forceBackNavigation = true
             pageStack.navigateBack()
+            forceBackNavigation = false
         }
     }
 

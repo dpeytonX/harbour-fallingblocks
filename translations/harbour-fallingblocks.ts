@@ -92,10 +92,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Lives</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -105,6 +101,18 @@
     </message>
     <message>
         <source>Infinite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mechanics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable Page Navigation in Game</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
