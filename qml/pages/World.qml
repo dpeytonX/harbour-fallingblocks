@@ -107,6 +107,10 @@ Page {
         Console.info("World: Application active state is " + appStatus +
                      ", Qt.ApplicationActive " + Qt.ApplicationActive +
                      ", Qt.application.state " + Qt.application.state)
+        if(!gameEnded && !gameStarted && pageStack.currentPage === world) {
+            console.debug("World: navigating to title")
+            pageStack.navigateBack()
+        }
     }
 
     onGameStartedChanged: {
@@ -125,7 +129,7 @@ Page {
 
     onSettingsChanged: {
         Console.info("World: settings changed")
-        if(settings === undefined || settings.lives === undefined) {
+        if(settings == undefined || settings.lives == undefined) {
             return
         }
         settingsLivesChanged() //initialize lives
@@ -143,7 +147,7 @@ Page {
         if(!!settings)
           Console.debug("World: settingsLives settings.lives " + settings.lives)
 
-        if(settings === undefined || settings.lives === undefined) {
+        if(settings == undefined || settings.lives == undefined) {
             lives = UIConstants.livesDefault
             return
         }
