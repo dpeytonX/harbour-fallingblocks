@@ -1,13 +1,20 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.fallingblocks.SailfishWidgets.Utilities 1.1
-import harbour.fallingblocks.SailfishWidgets.Settings 1.1
+import harbour.fallingblocks.SailfishWidgets.Utilities 1.2
+import harbour.fallingblocks.SailfishWidgets.Settings 1.2
 import harbour.fallingblocks.QmlLogger 2.0
+import harbour.fallingblocks.FallingBlocks 1.0
 import "cover"
 import "pages"
 
 ApplicationWindow
 {
+    property variant currentWorld
+    property bool gameEnded: false
+    property bool userInitiated: false
+    signal pushWorld()
+    signal restart()
+
     cover: CoverPage {
         inProgress: main.inProgress
         onStartNewGame: {
@@ -26,22 +33,17 @@ ApplicationWindow
             gameEnded = true
             restart()
         }
+        settings: appSettings
 
         onGoToWorld: userInitiated = false
     }
 
-    property variant currentWorld
-    property bool gameEnded: false
-    property bool userInitiated: false
-    signal pushWorld()
-    signal restart()
-
     ApplicationSettings {
-        id: settings
+        id: appSettings
         applicationName: "harbour-fallingblocks"
         fileName: "settings"
 
-        property string dummy: "welcome"
+        property int lives: UIConstants.settingsLivesDefault
     }
 
     DynamicLoader {
@@ -78,12 +80,12 @@ ApplicationWindow
 
     onPushWorld: {
         var component = Qt.createComponent("pages/World.qml")
-        loader.create(component, parent, {})
+        loader.create(component, parent, {"settings": appSettings})
         component.statusChanged.connect(loader.create)
     }
 
     Component.onCompleted:  {
-        Console.LOG_PRIORITY = Console.CRITICAL
+        Console.LOG_PRIORITY = Console.DEBUG
         pushWorld()
         pageStack.busyChanged.connect(restart)
     }

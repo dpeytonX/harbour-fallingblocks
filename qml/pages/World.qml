@@ -1,22 +1,27 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.Components 1.2
+import harbour.fallingblocks.SailfishWidgets.Settings 1.2
 import harbour.fallingblocks.FallingBlocks 1.0
 import harbour.fallingblocks.FallingBlocks.Controllers 1.0
 import harbour.fallingblocks.FallingBlocks.Sprites 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
 Page {
-    backNavigation: !playerControl.pressed
-    id: world
-
     property int appStatus: !!Qt.application.state ? Qt.application.state :
                                                      (Qt.application.active ? 1 : 0) //VM compat
     property bool gameStarted: ((!!Qt.ApplicationActive && appStatus === Qt.ApplicationActive) || appStatus === 1)
                                && status === PageStatus.Active && !gameEnded
+    property bool initialized: false
     property bool gameEnded: false
     property int score: 0
-    property int lives: 3 //This should eventually come from application settings
+    property int lives
+    property ApplicationSettings settings
+
+    signal settingsLivesChanged();
+
+    backNavigation: !playerControl.pressed
+    id: world
 
     Column {
         width: parent.width - Theme.paddingLarge * 2
@@ -31,7 +36,7 @@ Page {
 
         InformationalLabel {
             anchors.right: parent.right
-            text: lives + "  " + qsTr("Lives")
+            text: (lives == UIConstants.livesInfinite ? qsTr("∞") : lives) + "  " + qsTr("Lives")
         }
     }
 
@@ -44,6 +49,7 @@ Page {
         triggeredOnStart: true
 
         onObjectCompleted: {
+            initialized = true
             //Create a new collision object
             Console.debug("World: Creating a collision detector for " + object)
             object.collision.interval = UIConstants.collisionInterval
@@ -53,7 +59,8 @@ Page {
             object.collisionDetected.connect(function() {
                 Console.debug("World: collision detected " + object)
                 score += object.points
-                lives -= object.objectName === UIConstants.blockNameEvil? 1 : 0
+                if(lives != UIConstants.livesInfinite)
+                  lives -= object.objectName === UIConstants.blockNameEvil? 1 : 0
                 object.animate = false
                 object.visible = false
                 object.destroy()
@@ -68,6 +75,9 @@ Page {
         text: qsTr("Game Over")
         visible: gameEnded
         z: 1000
+    }
+
+    LevelController {
     }
 
     PlayerBlock {
@@ -111,6 +121,47 @@ Page {
             gameStarted = false
             gameEnded = true
         }
+    }
+
+    onSettingsChanged: {
+        Console.info("World: settings changed")
+        if(settings === undefined || settings.lives === undefined) {
+            return
+        }
+        settingsLivesChanged() //initialize lives
+        settings.livesChanged.connect(settingsLivesChanged)
+    }
+
+    onSettingsLivesChanged: {
+        Console.info("World: settingsLivesChanged")
+        Console.debug("World: settingsLives initialized " + initialized)
+        //Ignore if game's already in progress
+        if(initialized) return
+
+        Console.debug("World: settingsLives settings " + settings)
+
+        if(!!settings)
+          Console.debug("World: settingsLives settings.lives " + settings.lives)
+
+        if(settings === undefined || settings.lives === undefined) {
+            lives = UIConstants.livesDefault
+            return
+        }
+
+        var settingsLives = settings.lives
+        Console.trace("World: settingsLives JS " + settingsLives)
+        if(settingsLives == UIConstants.settingsLivesDefault) {
+            Console.trace("World: settingsLives " + UIConstants.livesDefault)
+            lives = UIConstants.livesDefault
+        } else if(settingsLives == UIConstants.settingsLivesEasy) {
+            Console.trace("World: settingsLives " + UIConstants.livesEasy)
+            lives = UIConstants.livesEasy
+        } else if(settingsLives == UIConstants.settingsLivesInfinite) {
+            Console.trace("World: settingsLives " + UIConstants.livesInfinite)
+            lives = UIConstants.livesInfinite
+        }
+
+        Console.debug("World: settingsLives lives " + lives)
     }
 
     Component.onCompleted: Console.debug("World: created")

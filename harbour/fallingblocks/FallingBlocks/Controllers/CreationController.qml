@@ -3,7 +3,11 @@ import harbour.fallingblocks.SailfishWidgets.JS 1.2
 import harbour.fallingblocks.FallingBlocks 1.0
 import harbour.fallingblocks.FallingBlocks.Sprites 1.0
 import harbour.fallingblocks.QmlLogger 2.0
-
+/*!
+  \qmltype CreationController
+  
+  Uses the BlockFactory to create random blocks on a Timer.
+  */
 Item {
     property bool animate
     property alias interval: timer.interval

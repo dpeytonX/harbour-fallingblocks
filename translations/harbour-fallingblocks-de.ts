@@ -72,6 +72,10 @@
         <source>In Progress</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Score</name>
@@ -108,6 +112,33 @@
     </message>
 </context>
 <context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Starting Lives</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lives</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Infinite</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>World</name>
     <message>
         <source>Score</source>
@@ -119,6 +150,10 @@
     </message>
     <message>
         <source>Game Over</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>∞</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
