@@ -20,6 +20,7 @@ Page {
     property ApplicationSettings settings
 
     signal settingsLivesChanged();
+    signal settingsDisableSwipeChanged();
 
     backNavigation: forceBackNavigation || (!playerControl.pressed && (!!settings ? !settings.disableSwipeToHome : true))
     id: world
@@ -81,27 +82,28 @@ Page {
     LevelController {
     }
 
+
+    MouseArea {
+        anchors.fill: parent
+        drag.target: player
+        drag.axis: Drag.XAxis
+        drag.minimumX: 0
+        drag.maximumX: world.width - player.width
+        enabled: !gameEnded
+        id: playerControl
+
+        onPressed: {
+            Console.debug("World: player pressed")
+        }
+        onReleased: {
+            Console.debug("World: player released")
+        }
+    }
+
     PlayerBlock {
         id: player
         x: (parent.width - width) / 2
         y: parent.height - height - Theme.paddingLarge
-
-        MouseArea {
-            anchors.fill: parent
-            drag.target: parent
-            drag.axis: Drag.XAxis
-            drag.minimumX: 0
-            drag.maximumX: world.width - parent.width
-            enabled: !gameEnded
-            id: playerControl
-
-            onPressed: {
-                Console.debug("World: player pressed")
-            }
-            onReleased: {
-                Console.debug("World: player released")
-            }
-        }
     }
 
     onAppStatusChanged: {
@@ -136,7 +138,20 @@ Page {
             return
         }
         settingsLivesChanged() //initialize lives
+        settingsDisableSwipeChanged()
         settings.livesChanged.connect(settingsLivesChanged)
+        settings.disableSwipeToHomeChanged.connect(settingsDisableSwipeChanged)
+    }
+
+    onSettingsDisableSwipeChanged: {
+        Console.info("World: settingsDisableSwipeChanged")
+        if(settings.disableSwipeToHome == undefined) {
+            playerControl.parent = player
+        }
+
+        Console.debug("World: settingsDisableSwipeChanged, disable is " + settings.disableSwipeToHome)
+
+        playerControl.parent = settings.disableSwipeToHome ? world : player
     }
 
     onSettingsLivesChanged: {
@@ -147,10 +162,7 @@ Page {
 
         Console.debug("World: settingsLives settings " + settings)
 
-        if(!!settings)
-          Console.debug("World: settingsLives settings.lives " + settings.lives)
-
-        if(settings == undefined || settings.lives == undefined) {
+        if(settings.lives == undefined) {
             lives = UIConstants.livesDefault
             return
         }
