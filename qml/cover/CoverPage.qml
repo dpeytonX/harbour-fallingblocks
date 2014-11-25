@@ -20,7 +20,7 @@ StandardCover {
 
     CoverActionList {
         CoverAction {
-            iconSource: IconThemes.iconCoverNew
+            iconSource: IconThemes.iconCoverRefresh
             onTriggered: {
                 Console.debug("CoverPage: new game action")
                 startNewGame()
