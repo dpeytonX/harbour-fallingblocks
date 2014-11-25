@@ -8,15 +8,10 @@ import harbour.fallingblocks.FallingBlocks.Sprites 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
 Page {
-    property int appStatus: !!Qt.application.state ? Qt.application.state :
-                                                     (Qt.application.active ? 1 : 0) //VM compat
+    property alias gameStatus: game
+    property alias lives: player.lives
     property bool forceBackNavigation: false
-    property bool gameStarted: ((!!Qt.ApplicationActive && appStatus === Qt.ApplicationActive) || appStatus === 1)
-                               && status === PageStatus.Active && !gameEnded
     property bool initialized: false
-    property bool gameEnded: false
-    property int score: 0
-    property int lives
     property ApplicationSettings settings
 
     signal settingsLivesChanged();
@@ -33,7 +28,7 @@ Page {
 
         InformationalLabel {
             anchors.right: parent.right
-            text: score + "  " + qsTr("Score")
+            text: level.score + "  " + qsTr("Score")
         }
 
         InformationalLabel {
@@ -43,7 +38,7 @@ Page {
     }
 
     CreationController {
-        animate: gameStarted
+        animate: game.gameStarted
         id: createLoop
         interval: UIConstants.interval
         repeat: true
@@ -60,7 +55,7 @@ Page {
             object.collision.source = player
             object.collisionDetected.connect(function() {
                 Console.debug("World: collision detected " + object)
-                score += object.points
+                level.score += object.points
                 if(lives != UIConstants.livesInfinite)
                   lives -= object.objectName === UIConstants.blockNameEvil? 1 : 0
                 object.animate = false
@@ -68,6 +63,26 @@ Page {
                 object.destroy()
             })
             object.collision.start()
+        }
+    }
+
+    GameController {
+        id: game
+        onAppStatusChanged: {
+            Console.info("World: Application active state is " + appStatus +
+                         ", Qt.ApplicationActive " + Qt.ApplicationActive +
+                         ", Qt.application.state " + Qt.application.state)
+            if(!gameEnded && !gameStarted && pageStack.currentPage === world) {
+                console.debug("World: navigating to title")
+                forceBackNavigation = true
+                pageStack.navigateBack()
+                forceBackNavigation = false
+            }
+        }
+
+        onGameStartedChanged: {
+            Console.debug("World: Game Status: " + gameStarted)
+            gameStarted ? createLoop.start() : createLoop.stop()
         }
     }
 
@@ -80,6 +95,7 @@ Page {
     }
 
     LevelController {
+        id: level
     }
 
 
@@ -101,34 +117,17 @@ Page {
     }
 
     PlayerBlock {
+        property int lives
+
         id: player
         x: (parent.width - width) / 2
         y: parent.height - height - Theme.paddingLarge
-    }
 
-    onAppStatusChanged: {
-        Console.info("World: Application active state is " + appStatus +
-                     ", Qt.ApplicationActive " + Qt.ApplicationActive +
-                     ", Qt.application.state " + Qt.application.state)
-        if(!gameEnded && !gameStarted && pageStack.currentPage === world) {
-            console.debug("World: navigating to title")
-            forceBackNavigation = true
-            pageStack.navigateBack()
-            forceBackNavigation = false
-        }
-    }
-
-    onGameStartedChanged: {
-        Console.debug("World: Game Status: " + gameStarted)
-        gameStarted ? createLoop.start() : createLoop.stop()
-    }
-
-    onLivesChanged: {
-        Console.debug("World: Lives " + lives)
-        if(!lives) {
-            // Game Over
-            gameStarted = false
-            gameEnded = true
+        onLivesChanged: {
+            Console.debug("World: Lives " + lives)
+            if(!lives) {
+                game.endGame()
+            }
         }
     }
 

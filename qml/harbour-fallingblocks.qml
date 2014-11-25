@@ -50,8 +50,8 @@ ApplicationWindow
     DynamicLoader {
         id: loader
         onObjectCompleted: {
-            object.gameEndedChanged.connect(function() {
-                gameEnded = object.gameEnded
+            object.gameStatus.gameEndedChanged.connect(function() {
+                gameEnded = object.gameStatus.gameEnded
             })
             currentWorld = object
             Console.debug("app: world completed " + currentWorld)

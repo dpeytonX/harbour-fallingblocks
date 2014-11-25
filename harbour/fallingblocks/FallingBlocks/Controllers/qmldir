@@ -1,3 +1,4 @@
 module harbour.fallingblocks.FallingBlocks.Controllers
 CreationController 1.0 CreationController.qml
+GameController 1.0 GameController.qml
 LevelController 1.0 LevelController.qml
