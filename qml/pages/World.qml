@@ -28,7 +28,7 @@ Page {
 
         InformationalLabel {
             anchors.right: parent.right
-            text: level.score + "  " + qsTr("Score")
+            text: levelStatus.score + "  " + qsTr("Score")
         }
 
         InformationalLabel {
@@ -55,7 +55,7 @@ Page {
             object.collision.source = player
             object.collisionDetected.connect(function() {
                 Console.debug("World: collision detected " + object)
-                level.score += object.points
+                levelStatus.score += object.points
                 if(lives != UIConstants.livesInfinite)
                   lives -= object.objectName === UIConstants.blockNameEvil? 1 : 0
                 object.animate = false
@@ -95,7 +95,11 @@ Page {
     }
 
     LevelController {
-        id: level
+        id: levelStatus
+
+        onLevelChanged: {
+            Console.debug("World: levelStatus changed: " + level)
+        }
     }
 
 
