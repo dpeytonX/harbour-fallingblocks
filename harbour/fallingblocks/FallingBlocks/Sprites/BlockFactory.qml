@@ -10,7 +10,6 @@ Item {
     DynamicLoader {
         id: loader
         onObjectCompleted: {
-            Console.debug("BlockFactory: object constructed " + object);
             parent.objectCompleted(object)
         }
 
@@ -19,7 +18,6 @@ Item {
 
     onGenerate: {
         var position = -1;
-        Console.debug("BlockFactory: Searching for objectName " + objectName)
         for(var i = 0; i < UIConstants.blocks.length; ++i) {
             if(UIConstants.blocks[i] === objectName) {
                 position = i
@@ -27,10 +25,8 @@ Item {
             }
         }
 
-        Console.trace("BlockFactory: found position " + position)
         if(position != -1) {
             var qml = UIConstants.blocks[position] + ".qml"
-            Console.trace("BlockFactory: qml " + qml)
             var component = Qt.createComponent(qml)
             loader.create(component, parent, properties)
             component.statusChanged.connect(loader.create)

@@ -35,7 +35,6 @@ Item {
                     object.destroy()
             })
             animateChanged.connect(function() {object.animate = animate})
-            Console.debug("CreationController: initialized object " + object)
             parent.objectCompleted(object)
         }
     }
@@ -53,13 +52,10 @@ Item {
                     break;
                 }
             }
-
-            Console.debug("CreationController: create block type " + index)
             factory.generate(UIConstants.blocks[index], spriteParent, {})
         }
     }
 
-    onAnimateChanged: Console.debug("CreationController: animation changed to " + animate)
     onStart: timer.start()
     onStop: timer.stop()
 }

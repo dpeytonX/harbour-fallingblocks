@@ -34,10 +34,7 @@ Page {
             }
             width: settingsPage.width //workaround for menu item display being cut
 
-            onCurrentIndexChanged: {
-                Console.info("Settings: lives index set to " + currentIndex)
-                settings.lives = currentIndex
-            }
+            onCurrentIndexChanged: settings.lives = currentIndex
         }
 
         Heading {text: qsTr("Miscellaneous")}
@@ -47,10 +44,7 @@ Page {
             id: swipe
             text: qsTr("Disable Page Navigation in Game")
 
-            onCheckedChanged: {
-                Console.info("Settings: disable swipe set to " + checked)
-                settings.disableSwipeToHome = checked
-            }
+            onCheckedChanged: settings.disableSwipeToHome = checked
         }
     }
 }

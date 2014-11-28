@@ -39,13 +39,6 @@ Block {
         onCollisionDetected: parent.collisionDetected(source, target)
     }
 
-    onAnimateChanged: {
-        Console.verbose("FallingBlock: animation state is " + animate)
-        if(collisionDetector.target)
-            animate ? collisionDetector.start() : collisionDetector.stop()
-    }
+    onAnimateChanged: !!(collisionDetector.target) && animate ? collisionDetector.start() : collisionDetector.stop()
 
-    onCollisionDetected: Console.trace("FallingBlock: collision detected " + this)
-
-    Component.onDestruction: Console.trace("LoggingBlock: block destroyed")
 }

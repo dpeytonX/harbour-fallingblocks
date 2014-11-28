@@ -17,7 +17,6 @@ ApplicationWindow
     cover: CoverPage {
         inProgress: main.inProgress
         onStartNewGame: {
-            Console.debug("app: received new world request from cover")
             if(pageStack.find(function(page) {return page === currentWorld}))
                 pageStack.popAttached()
             main.startNewGame(false)
@@ -27,7 +26,6 @@ ApplicationWindow
     initialPage: Main {
         id: main
         onStartNewGame: {
-            Console.debug("app: starting new world with automatic push " + immediate)
             userInitiated = immediate
             gameEnded = true
             restart()
@@ -43,7 +41,6 @@ ApplicationWindow
                 gameEnded = object.gameStatus.gameEnded
             })
             currentWorld = object
-            Console.debug("app: world completed " + currentWorld)
             pageStack.pushAttached(currentWorld)
             main.inProgress = false
             if(userInitiated) main.goToWorld()
@@ -75,7 +72,7 @@ ApplicationWindow
     }
 
     Component.onCompleted:  {
-        Console.LOG_PRIORITY = Console.CRITICAL
+        Console.LOG_PRIORITY = Console.ERROR
         pushWorld()
         pageStack.busyChanged.connect(restart)
     }

@@ -17,12 +17,7 @@ Timer {
             return;
         }
 
-        Console.verbose("CollisionDetector: source " + source + ", target " + target)
         if(MathHelper.isIntersectRect(source, target))
             collisionDetected(source, target)
     }
-
-    onCollisionDetected: Console.trace("CollisionDetector: made contact " + this)
-
-    Component.onDestruction: Console.trace("CollisionDetector: detroyed " + this)
 }
