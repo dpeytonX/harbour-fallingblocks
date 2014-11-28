@@ -15,18 +15,23 @@ Item {
     onScoreChanged: {
         if(!autoDetermine) return
 
+
         if(score < UIConstants.scoreMedium) {
-            level = 0
+            level = UIConstants.levelEasy
             return
         }
         if(score < UIConstants.scoreHard) {
-            level = 1
+            level = UIConstants.levelMedium
+            return
+        }
+        if(score < UIConstants.scoreExtreme) {
+            level = UIConstants.levelHard
             return
         }
         if(score < UIConstants.scoreSuper) {
-            level = 2
+            level = UIConstants.levelExtreme
             return
         }
-        level = 3
+        level = UIConstants.levelSuper
     }
 }

@@ -12,6 +12,9 @@ Page {
     property alias lives: player.lives
     property bool forceBackNavigation: false
     property bool initialized: false
+    property int currentSpeed: UIConstants.speed
+    property int currentInterval: UIConstants.interval
+    property variant currentSpawnRatio: UIConstants.spawnRatioEasy
 
     backNavigation: forceBackNavigation || (!playerControl.pressed && (!!settings ? !settings.disableSwipeToHome : true))
     id: world
@@ -43,29 +46,13 @@ Page {
             Console.info("World: settingsLivesChanged")
             Console.debug("World: settingsLives initialized " + initialized)
             //Ignore if game's already in progress
-            if(initialized) return
+            if(!initialized) player.lives = UIConstants.lives[settings.lives]
 
-            Console.debug("World: settingsLives settings " + settings)
+            /*Console.debug("World: settingsLives settings " + settings)
 
-            if(settings.lives == undefined) {
-                player.lives = UIConstants.livesDefault
-                return
-            }
-
-            var settingsLives = settings.lives
             Console.debug("World: settingsLives JS " + settingsLives)
-            if(settingsLives == UIConstants.settingsLivesDefault) {
-                Console.trace("World: settingsLives " + UIConstants.livesDefault)
-                player.lives = UIConstants.livesDefault
-            } else if(settingsLives == UIConstants.settingsLivesEasy) {
-                Console.trace("World: settingsLives " + UIConstants.livesEasy)
-                player.lives = UIConstants.livesEasy
-            } else if(settingsLives == UIConstants.settingsLivesInfinite) {
-                Console.trace("World: settingsLives " + UIConstants.livesInfinite)
-                player.lives = UIConstants.livesInfinite
-            }
-
-            Console.debug("World: settingsLives lives " + player.lives)
+            var settingsLives = settings.lives
+            player.lives = UIConstants.lives[settingLives]*/
         }
     }
 
@@ -77,19 +64,36 @@ Page {
 
         InformationalLabel {
             anchors.right: parent.right
-            text: levelStatus.score + "  " + qsTr("Score")
+            text: levelStatus.score < -100000 ? qsTr("∞") : levelStatus.score + "  " + qsTr("Score")
         }
 
         InformationalLabel {
             anchors.right: parent.right
             text: (lives == UIConstants.livesInfinite ? qsTr("∞") : lives) + "  " + qsTr("Lives")
         }
+
+        InformationalLabel {
+            anchors.right: parent.right
+            text: qsTr("Difficulty") + " "  + function() {
+                if(levelStatus.level == UIConstants.levelEasy)
+                    return qsTr("Easy")
+                if(levelStatus.level == UIConstants.levelMedium)
+                    return qsTr("Medium")
+                if(levelStatus.level == UIConstants.levelHard)
+                    return qsTr("Hard")
+                if(levelStatus.level == UIConstants.levelExtreme)
+                    return qsTr("Extreme")
+                return qsTr("Nightmare")
+            }()
+        }
     }
 
     CreationController {
         animate: game.gameStarted
         id: createLoop
-        interval: UIConstants.interval
+        interval: currentInterval
+        speed: currentSpeed
+        spawnRatio: currentSpawnRatio
         repeat: true
         spriteParent: world
         triggeredOnStart: true
@@ -133,6 +137,8 @@ Page {
             Console.debug("World: Game Status: " + gameStarted)
             gameStarted ? createLoop.start() : createLoop.stop()
         }
+
+        onGameEndedChanged: forceBackNavigation = true
     }
 
     Heading {
@@ -147,7 +153,10 @@ Page {
         id: levelStatus
 
         onLevelChanged: {
-            Console.debug("World: levelStatus changed: " + level)
+            Console.info("World: levelStatus changed: " + level)
+            currentSpeed = UIConstants.levelSpeeds[level];
+            currentInterval = UIConstants.intervals[level];
+            currentSpawnRatio = UIConstants.spawnRatios[level];
         }
     }
 

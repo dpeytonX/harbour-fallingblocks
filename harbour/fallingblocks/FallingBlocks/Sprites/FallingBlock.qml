@@ -3,15 +3,16 @@ import harbour.fallingblocks.FallingBlocks 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
 Block {
-    border.color: "white"
-    border.width: 1
-
     property bool animate: false
     property real animationRate: UIConstants.animationRate
     property alias collision: collisionDetector
     property int points
-    property real speed
+    property int speed
+    property int blockType
     signal collisionDetected(Item source, Item target)
+
+    border.color: "white"
+    border.width: 1
 
     Behavior on y {
         PropertyAnimation {

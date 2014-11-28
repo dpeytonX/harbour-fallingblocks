@@ -75,7 +75,7 @@ ApplicationWindow
     }
 
     Component.onCompleted:  {
-        Console.LOG_PRIORITY = Console.DEBUG
+        Console.LOG_PRIORITY = Console.CRITICAL
         pushWorld()
         pageStack.busyChanged.connect(restart)
     }

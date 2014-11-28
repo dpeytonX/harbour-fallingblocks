@@ -134,5 +134,29 @@
         <source>∞</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Easy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Difficulty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extreme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nightmare</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
