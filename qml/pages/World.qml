@@ -12,13 +12,62 @@ Page {
     property alias lives: player.lives
     property bool forceBackNavigation: false
     property bool initialized: false
-    property ApplicationSettings settings
-
-    signal settingsLivesChanged();
-    signal settingsDisableSwipeChanged();
 
     backNavigation: forceBackNavigation || (!playerControl.pressed && (!!settings ? !settings.disableSwipeToHome : true))
     id: world
+
+    ApplicationSettings {
+        id: settings
+        applicationName: "harbour-fallingblocks"
+        fileName: "settings"
+
+        property int lives: UIConstants.settingsLivesDefault
+        property bool disableSwipeToHome: false
+
+        signal updatedSettings()
+
+        onSettingsPropertyUpdated: updatedSettings()
+        onSettingsInitialized: updatedSettings()
+
+        onUpdatedSettings: {
+            Console.info("World: settingsDisableSwipeChanged")
+            if(settings.disableSwipeToHome == undefined) {
+                playerControl.parent = player
+            }
+
+            Console.debug("World: settingsDisableSwipeChanged, disable is " + settings.disableSwipeToHome)
+
+            playerControl.parent = settings.disableSwipeToHome ? world : player
+
+            ////////
+            Console.info("World: settingsLivesChanged")
+            Console.debug("World: settingsLives initialized " + initialized)
+            //Ignore if game's already in progress
+            if(initialized) return
+
+            Console.debug("World: settingsLives settings " + settings)
+
+            if(settings.lives == undefined) {
+                player.lives = UIConstants.livesDefault
+                return
+            }
+
+            var settingsLives = settings.lives
+            Console.debug("World: settingsLives JS " + settingsLives)
+            if(settingsLives == UIConstants.settingsLivesDefault) {
+                Console.trace("World: settingsLives " + UIConstants.livesDefault)
+                player.lives = UIConstants.livesDefault
+            } else if(settingsLives == UIConstants.settingsLivesEasy) {
+                Console.trace("World: settingsLives " + UIConstants.livesEasy)
+                player.lives = UIConstants.livesEasy
+            } else if(settingsLives == UIConstants.settingsLivesInfinite) {
+                Console.trace("World: settingsLives " + UIConstants.livesInfinite)
+                player.lives = UIConstants.livesInfinite
+            }
+
+            Console.debug("World: settingsLives lives " + player.lives)
+        }
+    }
 
     Column {
         width: parent.width - Theme.paddingLarge * 2
@@ -133,57 +182,6 @@ Page {
                 game.endGame()
             }
         }
-    }
-
-    onSettingsChanged: {
-        Console.info("World: settings changed")
-        if(settings == undefined || settings.lives == undefined) {
-            return
-        }
-        settingsLivesChanged() //initialize lives
-        settingsDisableSwipeChanged()
-        settings.livesChanged.connect(settingsLivesChanged)
-        settings.disableSwipeToHomeChanged.connect(settingsDisableSwipeChanged)
-    }
-
-    onSettingsDisableSwipeChanged: {
-        Console.info("World: settingsDisableSwipeChanged")
-        if(settings.disableSwipeToHome == undefined) {
-            playerControl.parent = player
-        }
-
-        Console.debug("World: settingsDisableSwipeChanged, disable is " + settings.disableSwipeToHome)
-
-        playerControl.parent = settings.disableSwipeToHome ? world : player
-    }
-
-    onSettingsLivesChanged: {
-        Console.info("World: settingsLivesChanged")
-        Console.debug("World: settingsLives initialized " + initialized)
-        //Ignore if game's already in progress
-        if(initialized) return
-
-        Console.debug("World: settingsLives settings " + settings)
-
-        if(settings.lives == undefined) {
-            lives = UIConstants.livesDefault
-            return
-        }
-
-        var settingsLives = settings.lives
-        Console.trace("World: settingsLives JS " + settingsLives)
-        if(settingsLives == UIConstants.settingsLivesDefault) {
-            Console.trace("World: settingsLives " + UIConstants.livesDefault)
-            lives = UIConstants.livesDefault
-        } else if(settingsLives == UIConstants.settingsLivesEasy) {
-            Console.trace("World: settingsLives " + UIConstants.livesEasy)
-            lives = UIConstants.livesEasy
-        } else if(settingsLives == UIConstants.settingsLivesInfinite) {
-            Console.trace("World: settingsLives " + UIConstants.livesInfinite)
-            lives = UIConstants.livesInfinite
-        }
-
-        Console.debug("World: settingsLives lives " + lives)
     }
 
     Component.onCompleted: Console.debug("World: created")

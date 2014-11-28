@@ -8,7 +8,14 @@ import harbour.fallingblocks.QmlLogger 2.0
 Page {
     id: settingsPage
 
-    property ApplicationSettings settings
+    ApplicationSettings {
+        id: settings
+        applicationName: "harbour-fallingblocks"
+        fileName: "settings"
+
+        property int lives: UIConstants.settingsLivesDefault
+        property bool disableSwipeToHome: false
+    }
 
     PageColumn {
         title: qsTr("Settings")
@@ -16,6 +23,7 @@ Page {
         Heading {text: qsTr("Mechanics")}
 
         ComboBox {
+            currentIndex: settings.lives
             id: livesSelect
             label: qsTr("Starting Lives")
             menu: ContextMenu {
@@ -35,6 +43,7 @@ Page {
         Heading {text: qsTr("Miscellaneous")}
 
         TextSwitch {
+            checked: settings.disableSwipeToHome
             id: swipe
             text: qsTr("Disable Page Navigation in Game")
 
@@ -43,10 +52,5 @@ Page {
                 settings.disableSwipeToHome = checked
             }
         }
-    }
-
-    onSettingsChanged: {
-        livesSelect.currentIndex = settings.lives
-        swipe.checked = settings.disableSwipeToHome
     }
 }

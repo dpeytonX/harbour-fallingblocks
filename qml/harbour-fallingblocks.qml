@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.Utilities 1.2
-import harbour.fallingblocks.SailfishWidgets.Settings 1.2
 import harbour.fallingblocks.QmlLogger 2.0
 import harbour.fallingblocks.FallingBlocks 1.0
 import "cover"
@@ -33,18 +32,8 @@ ApplicationWindow
             gameEnded = true
             restart()
         }
-        settings: appSettings
 
         onGoToWorld: userInitiated = false
-    }
-
-    ApplicationSettings {
-        id: appSettings
-        applicationName: "harbour-fallingblocks"
-        fileName: "settings"
-
-        property int lives: UIConstants.settingsLivesDefault
-        property bool disableSwipeToHome: false
     }
 
     DynamicLoader {
@@ -81,7 +70,7 @@ ApplicationWindow
 
     onPushWorld: {
         var component = Qt.createComponent("pages/World.qml")
-        loader.create(component, parent, {"settings": appSettings})
+        loader.create(component, parent, {})
         component.statusChanged.connect(loader.create)
     }
 

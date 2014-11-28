@@ -1,12 +1,11 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.Components 1.2
-import harbour.fallingblocks.SailfishWidgets.Settings 1.2
+import harbour.fallingblocks.QmlLogger 2.0
 
 //TODO: change page header text on game status
 Page {
     property bool inProgress: false
-    property ApplicationSettings settings
     signal startNewGame(bool immediate)
     signal goToWorld()
 
@@ -16,7 +15,7 @@ Page {
         PullDownMenu {
             StandardMenuItem {
                 text: qsTr("Settings")
-                onClicked: pageStack.push(settingsPage, {"settings": settings})
+                onClicked: pageStack.push(settingsPage)
             }
 
             StandardMenuItem {
