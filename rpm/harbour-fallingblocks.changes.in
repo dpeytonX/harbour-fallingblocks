@@ -15,3 +15,8 @@
 - Smoothed falling animations
 - Updated Icon
 - Fixed red block
+
+* Tue Dec 02 2014 Dametrious Peyton <dametriouspeyton@countermail.com> 1.2.1-1
+- Added Level Difficulty
+- Added Game Settings
+- Disable page navigation setting

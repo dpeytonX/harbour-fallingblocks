@@ -14,7 +14,7 @@ Name:       harbour-fallingblocks
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Falling Blocks
-Version:    1.1
+Version:    1.2
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+Catch the blocks!
 
 
 %prep
