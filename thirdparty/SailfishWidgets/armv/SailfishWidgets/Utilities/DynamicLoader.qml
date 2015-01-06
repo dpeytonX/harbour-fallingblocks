@@ -20,7 +20,7 @@
 **
 **************************************************************************/
 
-import QtQuick 2.0
+import QtQuick 2.1
 
 /*!
    \qmltype DynamicLoader
@@ -57,7 +57,7 @@ Item {
             var o = component.createObject(parent, properties)
             objectCompleted(o)
         } else {
-            error(component.errorString())
+            error(!!component ? component.errorString() : "Component is null.")
         }
     }
 }
