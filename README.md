@@ -24,7 +24,8 @@ TODO:
 <li> Add Quit Game
 <li> Add High Score
 <li> Add Negative Score Count / Score Mode
-<li> Add Inifinite Lives
+<li> Add score / lives to title card
+<li> Save game / add Save button to title card
 </ul>
 
 <h2>Contribute</h2>
