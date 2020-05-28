@@ -1,4 +1,5 @@
-module SailfishWidgets.Settings
+module harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Settings
 versioner 3.3 version.qml
 plugin applicationsettings
+classname ApplicationSettings
 typeinfo settings.qmltypes

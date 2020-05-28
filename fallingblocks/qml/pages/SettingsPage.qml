@@ -22,13 +22,15 @@ Page {
         id: installedLocales
         includeAppDefault: true
         appName: UIConstants.appName
-        applicationDefaultText: qsTr("Application Default");
+        applicationDefaultText: qsTr("Application Default")
     }
 
     PageColumn {
         title: qsTr("Settings")
 
-        Heading {text: qsTr("Mechanics")}
+        Heading {
+            text: qsTr("Mechanics")
+        }
 
         ComboBox {
             currentIndex: settings.lives
@@ -37,7 +39,9 @@ Page {
             menu: ContextMenu {
                 Repeater {
                     model: [qsTr("3"), qsTr("5"), qsTr("Infinite")]
-                    StandardMenuItem {text: modelData}
+                    StandardMenuItem {
+                        text: modelData
+                    }
                 }
             }
             width: settingsPage.width //workaround for menu item display being cut
@@ -45,7 +49,9 @@ Page {
             onCurrentIndexChanged: settings.lives = currentIndex
         }
 
-        Heading {text: qsTr("Miscellaneous")}
+        Heading {
+            text: qsTr("Miscellaneous")
+        }
 
         TextSwitch {
             checked: settings.disableSwipeToHome
@@ -61,8 +67,9 @@ Page {
             label: qsTr("Language")
             width: settingsPage.width
 
-            currentIndex: installedLocales.findLocale(settings.locale) == -1 ?
-                              0 : installedLocales.findLocale(settings.locale)
+            currentIndex: installedLocales.findLocale(
+                              settings.locale) == -1 ? 0 : installedLocales.findLocale(
+                                                           settings.locale)
 
             menu: ContextMenu {
                 Repeater {

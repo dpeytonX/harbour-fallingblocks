@@ -33,16 +33,15 @@ INCLUDEPATH += harbour/fallingblocks/SailfishWidgets/include
 
 SOURCES += src/$${TARGET}.cpp
 
-OTHER_FILES += qml/* \
-    qml/cover/* \
-    qml/pages/* \
-    rpm/harbour-fallingblocks.changes.in \
+OTHER_FILES += rpm/harbour-fallingblocks.changes.in \
     rpm/harbour-fallingblocks.spec \
     rpm/harbour-fallingblocks.yaml \
     translations/*.ts \
     harbour-fallingblocks.desktop
 
 QML_IMPORT_PATH = .
+QML_IMPORT_PATH += harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Settings
+
 fallingblocks.files = harbour
 fallingblocks.path = /usr/share/$${TARGET}
 INSTALLS += fallingblocks
@@ -50,8 +49,8 @@ INSTALLS += fallingblocks
 
 ### Rename QML modules for Harbour store
 swlc.path = /usr/share/$${TARGET}/harbour/fallingblocks
-swlc.commands = find /home/deploy/installroot$$swl.path -name 'qmldir' -exec sed -i \"s/module Sail/module harbour.fallingblocks.Sail/\" \\{} \;;
-swlc.commands += find /home/deploy/installroot$$swl.path -name '*.qmltypes' -exec sed -i \"s/SailfishWidgets/harbour\/fallingblocks\/SailfishWidgets/\" \\{} \;
+swlc.commands = find /home/deploy/installroot$$swl.path -name 'qmldir' -exec sed -i \"s/module SailfishWidgets/module harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets/\" \\{} \;;
+swlc.commands += find /home/deploy/installroot$$swl.path -name '*.qmltypes' -exec sed -i \"s/SailfishWidgets/harbour\/fallingblocks\/SailfishWidgets\/armv7hl\/SailfishWidgets/\" \\{} \;;
 #swlc.commands += rm -fr /home/deploy/installroot$$swl.path/SailfishWidgets/$${NOT_PLATFORM}
 INSTALLS += swlc
 
@@ -59,12 +58,13 @@ fallingblockslibs.files = $$OUT_PWD/harbour/fallingblocks/SailfishWidgets/$${PLA
     $$OUT_PWD/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/libapplicationsettings.so \
     $$OUT_PWD/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language/liblanguage.so
 fallingblockslibs.path = /usr/share/$${TARGET}/lib
-fallingblockslibs.commands += pushd /home/deploy/installroot/usr/share/$${TARGET}/lib
-fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/libapplicationsettings.so .
-fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core/libcore.so.1 .
-fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language/liblanguage.so .
-fallingblockslibs.commands += chmod 755 *
-fallingblockslibs.commands += popd
+fallingblockslibs.commands = pushd /home/deploy/installroot/usr/share/$${TARGET}/lib;
+fallingblockslibs.commands += ls ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/;
+fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/libapplicationsettings.so .;
+fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core/libcore.so.1 .;
+fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language/liblanguage.so .;
+fallingblockslibs.commands += chmod 755 *;
+fallingblockslibs.commands += popd;
 INSTALLS += fallingblockslibs
 
 # Linker instructions--The order of -L and -l is important
