@@ -1,4 +1,0 @@
-module SailfishWidgets.Database
-versioner 3.3 version.qml
-plugin database
-typeinfo database.qmltypes

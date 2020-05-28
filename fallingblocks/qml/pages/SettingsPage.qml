@@ -8,6 +8,8 @@ import harbour.fallingblocks.QmlLogger 2.0
 
 Page {
     id: settingsPage
+    DefaultLocale {
+    }
 
     ApplicationSettings {
         id: settings

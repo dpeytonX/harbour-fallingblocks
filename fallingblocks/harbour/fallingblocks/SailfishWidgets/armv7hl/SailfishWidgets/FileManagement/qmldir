@@ -1,5 +1,0 @@
-module SailfishWidgets.FileManagement
-versioner 3.3 version.qml
-FileSelector 3.3 FileSelector.qml
-plugin filemanagement
-typeinfo filemanagement.qmltypes

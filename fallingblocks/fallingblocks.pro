@@ -15,7 +15,6 @@ TARGET = harbour-fallingblocks
 CONFIG += sailfishapp
 
 PLATFORM = armv7hl
-NOT_PLATFORM = i486
 
 SSH_TARGET_NAME = $(MER_SSH_TARGET_NAME)
 message ( "mer target is " $$SSH_TARGET_NAME )
@@ -40,7 +39,6 @@ OTHER_FILES += rpm/harbour-fallingblocks.changes.in \
     harbour-fallingblocks.desktop
 
 QML_IMPORT_PATH = .
-QML_IMPORT_PATH += harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Settings
 
 fallingblocks.files = harbour
 fallingblocks.path = /usr/share/$${TARGET}

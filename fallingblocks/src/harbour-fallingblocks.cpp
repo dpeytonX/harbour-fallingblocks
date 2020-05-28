@@ -32,7 +32,9 @@
 #include <QtQuick>
 #endif
 
+/*
 #include <sailfishmain.h>
+#include <QtCore/QCoreApplication>
 
 int main(int argc, char *argv[])
 {
@@ -45,6 +47,81 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    QCoreApplication::addLibraryPath(QCoreApplication::applicationDirPath() + "/lib");
     return SailfishMain::main(argc, argv, "harbour-fallingblocks", "settings", "locale");
+}
+
+*/
+
+#include "sailfishmain.h"
+#include <applicationsettings.h>
+
+#include <QDebug>
+#include <QGuiApplication>
+#include <QQuickView>
+#include <QTranslator>
+#include <QCoreApplication>
+
+/*!
+   \namespace SailfishMain
+   \since 5.2
+   \brief The SailfishMain namespace
+
+   \inmodule Core
+
+   This namespace supports the quick construction of SailfishApps.
+
+   Usage of this library requires that you define the following in the RPM spec file's \code >> macros ... << macros \endcode section.
+   \code
+   %define __requires_exclude ^libapplicationsettings|libcore.*$
+   \endcode
+
+   \c {SailfishMain} namespace has the following functions
+
+   Back to \l {Sailfish Widgets}
+ */
+
+/*!
+ \fn int SailfishMain::main(int argc, char *argv[], const QString& appName, const QString& settingsFile, const QString& localeSetting)
+
+ Constructs a Sailfish application using \a appName and \a settingsFile to load the application settings with a given \a localeSetting property.
+ If no locale was discovered, the default translation bundle is loaded using \a appName .qm file.
+
+ Finally, a Sailfish application is constructed using the \a argc and \a argv parameters.
+ */
+int main(int argc, char *argv[]) {
+    const QString& appName="harbour-fallingblocks"; const QString& settingsFile="settings"; const QString& localeSetting="locale";
+    if(!appName.isEmpty() && !settingsFile.isEmpty()) {
+        ApplicationSettings settings(appName, settingsFile);
+        qDebug() << settings.isValid(localeSetting);
+        qDebug() << settings.applicationName();
+        qDebug() << settings.fileName();
+        settings.refresh();
+        QGuiApplication* app(SailfishApp::application(argc, argv));
+
+        //QCoreApplication::addLibraryPath(QCoreApplication::applicationDirPath() + "/lib");
+
+        QTranslator* translator(new QTranslator(app));
+        //TODO: link to liblanguage for default locale
+        QString qm = appName + (localeSetting.isEmpty() || localeSetting == "app" ? ".qm" : ("-" + localeSetting + ".qm"));
+        QString path = SailfishApp::pathTo(QString("translations")).toLocalFile();
+        qDebug() << "qm: " << qm;
+        qDebug() << "path: " << path;
+        if(translator->load(qm, path)) {
+            bool result = app->installTranslator(translator);
+            qDebug() << "app loaded " << qm << result;
+            return result;
+        }
+        qDebug() << "didn't load translator file " << qm;
+        qDebug() << "loaded default locale";
+
+        //Start the app
+        QQuickView* view(SailfishApp::createView());
+        view->setSource(SailfishApp::pathTo("qml/" + appName + ".qml"));
+        view->show();
+        return app->exec();
+    }
+
+    return SailfishApp::main(argc, argv);
 }
 
