@@ -6,7 +6,7 @@
 Name:       harbour-fallingblocks
 
 # >> macros
-%define __provides_exclude_from ^%{_datadir}/.*$
+%define __provides_exclude_from ^%{_datadir}/(^lib)/.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
@@ -14,8 +14,8 @@ Name:       harbour-fallingblocks
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Falling Blocks
-Version:    1.2
-Release:    1
+Version:    1.3
+Release:    0
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
@@ -56,6 +56,8 @@ rm -rf %{buildroot}
 %qmake5_install
 
 # >> install post
+find %{buildroot} -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {} \;
+
 # << install post
 
 desktop-file-install --delete-original       \

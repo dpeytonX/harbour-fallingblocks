@@ -123,6 +123,10 @@
         <source>Switching languages requires an application restart</source>
         <translation>言語を変えるにはアップリの再起動が必要</translation>
     </message>
+    <message>
+        <source>Application Default</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>World</name>

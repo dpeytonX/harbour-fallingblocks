@@ -115,6 +115,18 @@
         <source>Disable Page Navigation in Game</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Application Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switching languages requires an application restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>World</name>

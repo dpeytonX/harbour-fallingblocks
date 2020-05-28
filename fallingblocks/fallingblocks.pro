@@ -16,14 +16,21 @@ CONFIG += sailfishapp
 #CONFIG += c++11
 #QMAKE_CXXFLAGS += "-std=c++0x"
 
-PLATFORM = i486
-eval( $MER_SSH_TARGET_NAME = SailfishOS-3.3.0.16-armv7hl) {
+PLATFORM = armv7hl
+SSH_TARGET_NAME = $(MER_SSH_TARGET_NAME)
+message ( "mer target is " $$SSH_TARGET_NAME )
+contains( SSH_TARGET_NAME, armv7hl ) {
   message ( "compiling for Phone" )
-  PLATFORM = armv
+  PLATFORM = armv7hl
 }
+message ( "platform is " $$PLATFORM )
+
+LIBS += -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings \
+        -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core \
+        -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language
 
 
-INCLUDEPATH += ../thirdparty/SailfishWidgets/$${PLATFORM} ../thirdparty/SailfishWidgets/include
+INCLUDEPATH += ../thirdparty/SailfishWidgets/include
 
 SOURCES += src/$${TARGET}.cpp
 
@@ -58,16 +65,24 @@ qmllogger.path = /usr/share/$${TARGET}/harbour/fallingblocks/QmlLogger
 INSTALLS += qmllogger
 
 #nemosynelibs.files = ../thirdparty/sailfish-widgets/src/qml/SailfishWidgets/Settings/libapplicationsettings* \
-fallingblockslibs.files = $$OUT_PWD/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core/libcore.so.1
+fallingblockslibs.files = $$OUT_PWD/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core/libcore.so.1 \
+    $$OUT_PWD/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/libapplicationsettings.so \
+    $$OUT_PWD/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language/liblanguage.so
 fallingblockslibs.path = /usr/share/$${TARGET}/lib
-fallingblockslibs.commands = "pushd /home/deploy/installroot/usr/share/$${TARGET}/lib; ln -s ../harbour/fallingblocks/SailfishWidgets/Settings/libapplicationsettings.so .;  ln -s ../harbour/fallingblocks/SailfishWidgets/Core/libcore.so ."
+#fallingblockslibs.commands = "pushd /home/deploy/installroot/usr/share/$${TARGET}/lib; ln -s ../harbour/fallingblocks/SailfishWidgets/Settings/libapplicationsettings.so .;  ln -s ../harbour/fallingblocks/SailfishWidgets/Core/libcore.so.1 .; ln -s ../harbour/fallingblocks/SailfishWidgets/Language/liblanguage.so .; popd"
+fallingblockslibs.commands = "pushd /home/deploy/installroot/usr/share/$${TARGET}/lib; cp ../harbour/fallingblocks/SailfishWidgets/Settings/libapplicationsettings.so .;  cp ../harbour/fallingblocks/SailfishWidgets/Core/libcore.so.1 .; cp ../harbour/fallingblocks/SailfishWidgets/Language/liblanguage.so .; chmod 755 *; popd"
 INSTALLS += fallingblockslibs
 
+#nemosynelibs.files = ../thirdparty/sailfish-widgets/src/qml/SailfishWidgets/Settings/libapplicationsettings* \
+#nemosynelibs.files = $$OUT_PWD/../thirdparty/sailfish-widgets/src/lib/core/libcore.so.1
+#nemosynelibs.path = /usr/share/$${TARGET}/lib
+#nemosynelibs.commands = "pushd /home/deploy/installroot/usr/share/$${TARGET}/lib; ln -s ../harbour/nemosyne/SailfishWidgets/Settings/libapplicationsettings.so ."
+#INSTALLS += nemosynelibs
+
 # Linker instructions--The order of -L and -l is important
-LIBS += -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings \
-        -lapplicationsettings \
-        -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core \
-        -lcore
+LIBS += -lapplicationsettings \
+        -lcore \
+        -llanguage
 
 # to disable building translations every time, comment out the
 # following CONFIG line

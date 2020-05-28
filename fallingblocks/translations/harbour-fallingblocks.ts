@@ -123,6 +123,10 @@
         <source>Switching languages requires an application restart</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Application Default</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>World</name>
