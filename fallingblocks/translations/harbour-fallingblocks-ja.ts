@@ -115,6 +115,14 @@
         <source>Disable Page Navigation in Game</source>
         <translation>ページナビを無効にする</translation>
     </message>
+    <message>
+        <source>Language</source>
+        <translation>言語</translation>
+    </message>
+    <message>
+        <source>Switching languages requires an application restart</source>
+        <translation>言語を変えるにはアップリの再起動が必要</translation>
+    </message>
 </context>
 <context>
     <name>World</name>

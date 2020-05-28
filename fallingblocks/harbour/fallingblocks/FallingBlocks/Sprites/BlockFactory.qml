@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import harbour.fallingblocks.QmlLogger 2.0
-import harbour.fallingblocks.SailfishWidgets.Utilities 1.2
+import harbour.fallingblocks.SailfishWidgets.Utilities 3.3
 import harbour.fallingblocks.FallingBlocks 1.0
 
 Item {

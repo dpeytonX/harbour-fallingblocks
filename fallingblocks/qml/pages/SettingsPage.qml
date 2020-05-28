@@ -1,7 +1,8 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
-import harbour.fallingblocks.SailfishWidgets.Components 1.2
-import harbour.fallingblocks.SailfishWidgets.Settings 1.2
+import harbour.fallingblocks.SailfishWidgets.Components 3.3
+import harbour.fallingblocks.SailfishWidgets.Language 3.3
+import harbour.fallingblocks.SailfishWidgets.Settings 3.3
 import harbour.fallingblocks.FallingBlocks 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
@@ -15,6 +16,13 @@ Page {
 
         property int lives: UIConstants.settingsLivesDefault
         property bool disableSwipeToHome: false
+    }
+
+    InstalledLocales {
+        id: installedLocales
+        includeAppDefault: true
+        appName: UIConstants.appName
+        applicationDefaultText: qsTr("Application Default");
     }
 
     PageColumn {
@@ -45,6 +53,26 @@ Page {
             text: qsTr("Disable Page Navigation in Game")
 
             onCheckedChanged: settings.disableSwipeToHome = checked
+        }
+
+        ComboBox {
+            id: languageCombo
+            description: qsTr("Switching languages requires an application restart")
+            label: qsTr("Language")
+            width: settingsPage.width
+
+            currentIndex: installedLocales.findLocale(settings.locale) == -1 ?
+                              0 : installedLocales.findLocale(settings.locale)
+
+            menu: ContextMenu {
+                Repeater {
+                    model: installedLocales.locales
+                    StandardMenuItem {
+                        text: modelData.pretty
+                        onClicked: settings.locale = modelData.locale
+                    }
+                }
+            }
         }
     }
 }

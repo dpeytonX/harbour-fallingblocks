@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import harbour.fallingblocks.QmlLogger 2.0
-import harbour.fallingblocks.SailfishWidgets.JS 1.2
+import harbour.fallingblocks.SailfishWidgets.JS 3.3
 
 Timer {
     property Item source

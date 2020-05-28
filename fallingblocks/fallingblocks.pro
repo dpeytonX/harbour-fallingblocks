@@ -23,7 +23,7 @@ eval( $MER_SSH_TARGET_NAME = SailfishOS-3.3.0.16-armv7hl) {
 }
 
 
-INCLUDEPATH += ../thirdparty/SailfishWidgets/$${PLATFORM}
+INCLUDEPATH += ../thirdparty/SailfishWidgets/$${PLATFORM} ../thirdparty/SailfishWidgets/include
 
 SOURCES += src/$${TARGET}.cpp
 
