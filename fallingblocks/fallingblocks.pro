@@ -13,23 +13,23 @@
 TARGET = harbour-fallingblocks
 
 CONFIG += sailfishapp
-#CONFIG += c++11
-#QMAKE_CXXFLAGS += "-std=c++0x"
 
 PLATFORM = armv7hl
+NOT_PLATFORM = i486
+
 SSH_TARGET_NAME = $(MER_SSH_TARGET_NAME)
 message ( "mer target is " $$SSH_TARGET_NAME )
-contains( SSH_TARGET_NAME, armv7hl ) {
-  message ( "compiling for Phone" )
-  PLATFORM = armv7hl
-}
+#contains( SSH_TARGET_NAME, armv7hl ) {
+#  message ( "compiling for Phone" )
+#  PLATFORM = armv7hl
+#}
 message ( "platform is " $$PLATFORM )
 
-LIBS += -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings \
-        -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core \
-        -L$$_PRO_FILE_PWD_/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language
+LIBS += -L$$_PRO_FILE_PWD_/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings \
+        -L$$_PRO_FILE_PWD_/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core \
+        -L$$_PRO_FILE_PWD_/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language
 
-INCLUDEPATH += ../thirdparty/SailfishWidgets/include
+INCLUDEPATH += harbour/fallingblocks/SailfishWidgets/include
 
 SOURCES += src/$${TARGET}.cpp
 
@@ -47,34 +47,25 @@ fallingblocks.files = harbour
 fallingblocks.path = /usr/share/$${TARGET}
 INSTALLS += fallingblocks
 
-swl.files = ../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets
-swl.path = /usr/share/$${TARGET}/harbour/fallingblocks
-INSTALLS += swl
 
 ### Rename QML modules for Harbour store
 swlc.path = /usr/share/$${TARGET}/harbour/fallingblocks
 swlc.commands = find /home/deploy/installroot$$swl.path -name 'qmldir' -exec sed -i \"s/module Sail/module harbour.fallingblocks.Sail/\" \\{} \;;
 swlc.commands += find /home/deploy/installroot$$swl.path -name '*.qmltypes' -exec sed -i \"s/SailfishWidgets/harbour\/fallingblocks\/SailfishWidgets/\" \\{} \;
+#swlc.commands += rm -fr /home/deploy/installroot$$swl.path/SailfishWidgets/$${NOT_PLATFORM}
 INSTALLS += swlc
 
-qmllogger.files = ../thirdparty/QmlLogger/qmldir ../thirdparty/QmlLogger/Logger.js
-qmllogger.path = /usr/share/$${TARGET}/harbour/fallingblocks/QmlLogger
-INSTALLS += qmllogger
-
-#nemosynelibs.files = ../thirdparty/sailfish-widgets/src/qml/SailfishWidgets/Settings/libapplicationsettings* \
-fallingblockslibs.files = $$OUT_PWD/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core/libcore.so.1 \
-    $$OUT_PWD/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/libapplicationsettings.so \
-    $$OUT_PWD/../thirdparty/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language/liblanguage.so
+fallingblockslibs.files = $$OUT_PWD/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core/libcore.so.1 \
+    $$OUT_PWD/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/libapplicationsettings.so \
+    $$OUT_PWD/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language/liblanguage.so
 fallingblockslibs.path = /usr/share/$${TARGET}/lib
-#fallingblockslibs.commands = "pushd /home/deploy/installroot/usr/share/$${TARGET}/lib; ln -s ../harbour/fallingblocks/SailfishWidgets/Settings/libapplicationsettings.so .;  ln -s ../harbour/fallingblocks/SailfishWidgets/Core/libcore.so.1 .; ln -s ../harbour/fallingblocks/SailfishWidgets/Language/liblanguage.so .; popd"
-fallingblockslibs.commands = "pushd /home/deploy/installroot/usr/share/$${TARGET}/lib; cp ../harbour/fallingblocks/SailfishWidgets/Settings/libapplicationsettings.so .;  cp ../harbour/fallingblocks/SailfishWidgets/Core/libcore.so.1 .; cp ../harbour/fallingblocks/SailfishWidgets/Language/liblanguage.so .; chmod 755 *; popd"
+fallingblockslibs.commands += pushd /home/deploy/installroot/usr/share/$${TARGET}/lib
+fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings/libapplicationsettings.so .
+fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Core/libcore.so.1 .
+fallingblockslibs.commands += cp ../harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Language/liblanguage.so .
+fallingblockslibs.commands += chmod 755 *
+fallingblockslibs.commands += popd
 INSTALLS += fallingblockslibs
-
-#nemosynelibs.files = ../thirdparty/sailfish-widgets/src/qml/SailfishWidgets/Settings/libapplicationsettings* \
-#nemosynelibs.files = $$OUT_PWD/../thirdparty/sailfish-widgets/src/lib/core/libcore.so.1
-#nemosynelibs.path = /usr/share/$${TARGET}/lib
-#nemosynelibs.commands = "pushd /home/deploy/installroot/usr/share/$${TARGET}/lib; ln -s ../harbour/nemosyne/SailfishWidgets/Settings/libapplicationsettings.so ."
-#INSTALLS += nemosynelibs
 
 # Linker instructions--The order of -L and -l is important
 LIBS += -lapplicationsettings \

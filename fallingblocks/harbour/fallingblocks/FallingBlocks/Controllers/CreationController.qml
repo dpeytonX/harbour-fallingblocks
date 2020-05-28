@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import harbour.fallingblocks.SailfishWidgets.JS 3.3
+import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.JS 3.3
 import harbour.fallingblocks.FallingBlocks 3.3
 import harbour.fallingblocks.FallingBlocks.Sprites 3.3
 import harbour.fallingblocks.QmlLogger 2.0
