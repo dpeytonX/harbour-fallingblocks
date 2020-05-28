@@ -39,6 +39,7 @@ OTHER_FILES += rpm/harbour-fallingblocks.changes.in \
     harbour-fallingblocks.desktop
 
 QML_IMPORT_PATH = .
+QML2_IMPORT_PATH += $$_PRO_FILE_PWD_/harbour/fallingblocks/SailfishWidgets/$${PLATFORM}/SailfishWidgets/Settings
 
 fallingblocks.files = harbour
 fallingblocks.path = /usr/share/$${TARGET}

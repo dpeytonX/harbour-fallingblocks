@@ -51,7 +51,7 @@
     </message>
     <message>
         <source>In Progress</source>
-        <translation>中止</translation>
+        <translation>実行中</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -125,7 +125,7 @@
     </message>
     <message>
         <source>Application Default</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">アップリの規定</translation>
     </message>
 </context>
 <context>
@@ -140,7 +140,7 @@
     </message>
     <message>
         <source>Game Over</source>
-        <translation></translation>
+        <translation>ゲームオーバー</translation>
     </message>
     <message>
         <source>∞</source>
@@ -148,15 +148,15 @@
     </message>
     <message>
         <source>Easy</source>
-        <translation></translation>
+        <translation>簡</translation>
     </message>
     <message>
         <source>Medium</source>
-        <translation></translation>
+        <translation>生</translation>
     </message>
     <message>
         <source>Hard</source>
-        <translation></translation>
+        <translation>難</translation>
     </message>
     <message>
         <source>Difficulty</source>
@@ -164,7 +164,7 @@
     </message>
     <message>
         <source>Extreme</source>
-        <translation></translation>
+        <translation>エクストリーム</translation>
     </message>
     <message>
         <source>Nightmare</source>

@@ -3,13 +3,11 @@ import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Components 3.3
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Language 3.3
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Settings 3.3
-import harbour.fallingblocks.FallingBlocks 1.0
+import harbour.fallingblocks.FallingBlocks.JS 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
 Page {
     id: settingsPage
-    DefaultLocale {
-    }
 
     ApplicationSettings {
         id: settings
@@ -18,6 +16,8 @@ Page {
 
         property int lives: UIConstants.settingsLivesDefault
         property bool disableSwipeToHome: false
+        property string locale: ""
+
     }
 
     InstalledLocales {
@@ -69,10 +69,6 @@ Page {
             label: qsTr("Language")
             width: settingsPage.width
 
-            currentIndex: installedLocales.findLocale(
-                              settings.locale) == -1 ? 0 : installedLocales.findLocale(
-                                                           settings.locale)
-
             menu: ContextMenu {
                 Repeater {
                     model: installedLocales.locales
@@ -84,4 +80,11 @@ Page {
             }
         }
     }
+
+    onStatusChanged: {
+        if(status == PageStatus.Active) {
+            languageCombo.currentIndex = installedLocales.findLocale(settings.locale) == -1 ? 0 : installedLocales.findLocale(settings.locale)
+        }
+    }
+
 }

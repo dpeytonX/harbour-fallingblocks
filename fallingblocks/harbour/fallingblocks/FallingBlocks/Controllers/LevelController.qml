@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
-import harbour.fallingblocks.FallingBlocks 1.0
+import harbour.fallingblocks.FallingBlocks.JS 1.0
+
 
 /*!
   \qmltype LevelController
@@ -13,22 +14,22 @@ Item {
     property int level
 
     onScoreChanged: {
-        if(!autoDetermine) return
+        if (!autoDetermine)
+            return
 
-
-        if(score < UIConstants.scoreMedium) {
+        if (score < UIConstants.scoreMedium) {
             level = UIConstants.levelEasy
             return
         }
-        if(score < UIConstants.scoreHard) {
+        if (score < UIConstants.scoreHard) {
             level = UIConstants.levelMedium
             return
         }
-        if(score < UIConstants.scoreExtreme) {
+        if (score < UIConstants.scoreExtreme) {
             level = UIConstants.levelHard
             return
         }
-        if(score < UIConstants.scoreSuper) {
+        if (score < UIConstants.scoreSuper) {
             level = UIConstants.levelExtreme
             return
         }

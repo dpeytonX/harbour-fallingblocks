@@ -2,7 +2,7 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Components 3.3
-import harbour.fallingblocks.FallingBlocks 1.0
+import harbour.fallingblocks.FallingBlocks.JS 1.0
 import harbour.fallingblocks.FallingBlocks.Sprites 1.0
 
 Dialog {
@@ -13,17 +13,29 @@ Dialog {
             columns: 2
             spacing: Theme.paddingSmall
 
-            EasyBlock {}
-            InformationalLabel {text: qsTr("Slowest block") + " +" + UIConstants.pointsEasy}
+            EasyBlock {
+            }
+            InformationalLabel {
+                text: qsTr("Slowest block") + " +" + UIConstants.pointsEasy
+            }
 
-            MediumBlock {}
-            InformationalLabel {text: qsTr("Slightly faster") + " +" + UIConstants.pointsMedium}
+            MediumBlock {
+            }
+            InformationalLabel {
+                text: qsTr("Slightly faster") + " +" + UIConstants.pointsMedium
+            }
 
-            HardBlock {}
-            InformationalLabel {text: qsTr("Fastest") + " +" + UIConstants.pointsHard}
+            HardBlock {
+            }
+            InformationalLabel {
+                text: qsTr("Fastest") + " +" + UIConstants.pointsHard
+            }
 
-            EvilBlock {}
-            InformationalLabel {text: qsTr("Takes a life") + " " + UIConstants.pointsEvil}
+            EvilBlock {
+            }
+            InformationalLabel {
+                text: qsTr("Takes a life") + " " + UIConstants.pointsEvil
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 .pragma library
 
+var appName="harbour-fallingblocks"
+
 // Animation rate controls the frame rate
 var animationRate = 150
 var animationEasy = animationRate

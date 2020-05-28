@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import harbour.fallingblocks.FallingBlocks 1.0
+import harbour.fallingblocks.FallingBlocks.JS 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
 Block {
@@ -39,6 +39,7 @@ Block {
         onCollisionDetected: parent.collisionDetected(source, target)
     }
 
-    onAnimateChanged: !!(collisionDetector.target) && animate ? collisionDetector.start() : collisionDetector.stop()
-
+    onAnimateChanged: !!(collisionDetector.target)
+                      && animate ? collisionDetector.start(
+                                       ) : collisionDetector.stop()
 }

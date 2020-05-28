@@ -2,7 +2,7 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Components 3.3
-import harbour.fallingblocks.FallingBlocks 1.0
+import harbour.fallingblocks.FallingBlocks.JS 1.0
 import harbour.fallingblocks.FallingBlocks.Sprites 1.0
 
 Dialog {
@@ -11,7 +11,9 @@ Dialog {
     PageColumn {
         title: qsTr("Help")
 
-        Heading {text: qsTr("How to play")}
+        Heading {
+            text: qsTr("How to play")
+        }
 
         Paragraph {
             text: qsTr("It's simple! Catch as many blocks as you can while avoiding the mysterious 'evil block'.")
@@ -22,5 +24,7 @@ Dialog {
         }
     }
 
-    Score {id:score}
+    Score {
+        id: score
+    }
 }
