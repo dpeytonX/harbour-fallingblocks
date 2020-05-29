@@ -75,7 +75,6 @@ LIBS += -lapplicationsettings \
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/harbour-fallingblocks.ts \
-                translations/harbour-fallingblocks-de.ts \
                 translations/harbour-fallingblocks-ja.ts
 
 RESOURCES += \

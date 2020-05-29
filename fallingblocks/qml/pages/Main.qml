@@ -31,8 +31,10 @@ Page {
 
         header: PageHeader { title: inProgress ? qsTr("In Progress") : qsTr("Start") }
 
-        Heading {
+        Label {
             anchors.centerIn: parent
+            font.pixelSize: Theme.fontSizeLarge
+            color: palette.highlightColor
             text: qsTr("Falling blocks")
         }
 
