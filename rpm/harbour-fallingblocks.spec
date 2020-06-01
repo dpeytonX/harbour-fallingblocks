@@ -66,10 +66,15 @@ desktop-file-install --delete-original       \
    %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
-%defattr(-,root,root,-)
+%defattr(644,root,root,755)
 %{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+
+%post
+chmod 755 %{_bindir}/%{name}
+chmod 755 -R %{_datadir}/%{lib}
+
 # >> files
 # << files
