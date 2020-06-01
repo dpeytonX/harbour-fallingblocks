@@ -9,3 +9,4 @@ thirdparty/ thirdparty/QmlLogger thirdparty/QmlLogger/Logger.js thirdparty/QmlLo
 thirdparty/**
 fallingblocks/harbour/fallingblocks/SailfishWidgets/
 fallingblocks/harbour/fallingblocks/QmlLogger
+lib

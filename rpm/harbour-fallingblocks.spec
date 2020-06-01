@@ -74,7 +74,7 @@ desktop-file-install --delete-original       \
 
 %post
 chmod 755 %{_bindir}/%{name}
-chmod 755 -R %{_datadir}/%{lib}
+chmod 755 -R %{_datadir}/%{name}/%{lib}/*
 
 # >> files
 # << files
