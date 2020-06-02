@@ -57,8 +57,6 @@ rm -rf %{buildroot}
 %qmake5_install
 
 # >> install post
-find %{buildroot} -type f \( -name '*.so' -o -name '*.so.*' \) -exec chmod 755 {} \;
-
 # << install post
 
 desktop-file-install --delete-original       \
@@ -66,15 +64,28 @@ desktop-file-install --delete-original       \
    %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
-%defattr(644,root,root,755)
-%{_bindir}
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-
-%post
-chmod 755 %{_bindir}/%{name}
-chmod 755 -R %{_datadir}/%{name}/%{lib}/*
+%attr(755, root, root) %{_bindir}/%{name}
+%attr(755, root, root) %{_datadir}/%{name}
+%attr(644, root, root) %{_datadir}/%{name}/qml/*.qml
+%attr(644, root, root) %{_datadir}/%{name}/qml/cover/*.qml
+%attr(644, root, root) %{_datadir}/%{name}/qml/pages/*.qml
+%attr(644, root, root) %{_datadir}/%{name}/translations/*.qm
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/QmlLogger/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/FallingBlocks/Controllers/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/FallingBlocks/JS/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/FallingBlocks/Sprites/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/include/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Components/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Database/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/FileManagement/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/JS/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Language/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Settings/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Utilities/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/*.qdoc
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/*.qmltypes
+%attr(644, root, root) %{_datadir}/applications/%{name}.desktop
+%attr(644, root, root) %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 
 # >> files
 # << files
