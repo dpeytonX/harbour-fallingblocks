@@ -7,6 +7,7 @@ Name:       harbour-fallingblocks
 
 # >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
+%define __requires_exclude ^libapplicationsettings|libcore|liblanguage.*$
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
@@ -14,8 +15,8 @@ Name:       harbour-fallingblocks
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Falling Blocks
-Version:    1.2
-Release:    1
+Version:    1.3
+Release:    0
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
@@ -63,10 +64,28 @@ desktop-file-install --delete-original       \
    %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
-%defattr(-,root,root,-)
-%{_bindir}
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+%attr(755, root, root) %{_bindir}/%{name}
+%attr(755, root, root) %{_datadir}/%{name}
+%attr(644, root, root) %{_datadir}/%{name}/qml/*.qml
+%attr(644, root, root) %{_datadir}/%{name}/qml/cover/*.qml
+%attr(644, root, root) %{_datadir}/%{name}/qml/pages/*.qml
+%attr(644, root, root) %{_datadir}/%{name}/translations/*.qm
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/QmlLogger/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/FallingBlocks/Controllers/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/FallingBlocks/JS/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/FallingBlocks/Sprites/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/include/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Components/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Database/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/FileManagement/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/JS/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Language/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Settings/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Utilities/*
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/*.qdoc
+%attr(644, root, root) %{_datadir}/%{name}/harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/*.qmltypes
+%attr(644, root, root) %{_datadir}/applications/%{name}.desktop
+%attr(644, root, root) %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+
 # >> files
 # << files
