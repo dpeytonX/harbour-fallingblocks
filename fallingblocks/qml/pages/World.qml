@@ -56,7 +56,7 @@ Page {
 
         InformationalLabel {
             anchors.right: parent.right
-            text: levelStatus.score < -100000 ? qsTr("∞") : levelStatus.score + "  " + qsTr(
+            text: levelStatus.score < UIConstants.scoreInfinite ? qsTr("∞") : levelStatus.score + "  " + qsTr(
                                                     "Score")
         }
 

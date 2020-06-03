@@ -92,3 +92,4 @@ var scoreMedium = 5000
 var scoreHard = 20000
 var scoreExtreme = 50000
 var scoreSuper = 100000
+var scoreInfinite = -100000
