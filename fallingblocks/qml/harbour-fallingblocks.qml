@@ -6,13 +6,16 @@ import "cover"
 import "pages"
 
 ApplicationWindow {
+    id: app
     property variant currentWorld
     property bool gameEnded: false
     property bool userInitiated: false
     signal pushWorld
     signal restart
+    signal quit
 
     cover: CoverPage {
+        app: app
         inProgress: main.inProgress
         onStartNewGame: {
             if (pageStack.find(function (page) {
@@ -29,6 +32,12 @@ ApplicationWindow {
             userInitiated = immediate
             gameEnded = true
             restart()
+        }
+
+        onQuitGame: {
+            userInitiated = false
+            gameEnded = true
+            quit()
         }
 
         onGoToWorld: userInitiated = false
@@ -64,6 +73,27 @@ ApplicationWindow {
                 }
             } else {
                 main.inProgress = true
+            }
+        }
+    }
+
+    onQuit: {
+        if (!pageStack.busy) {
+            if (pageStack.currentPage !== currentWorld) {
+                if (gameEnded) {
+                    gameEnded = false
+                    if (pageStack.find(function (page) {
+                        return page === currentWorld
+                    }))
+                        pageStack.popAttached()
+
+                    if(currentWorld != null)
+                      currentWorld.destroy()
+
+                    pushWorld()
+                }
+            } else {
+                main.inProgress = false
             }
         }
     }

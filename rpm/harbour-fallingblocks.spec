@@ -15,7 +15,7 @@ Name:       harbour-fallingblocks
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Falling Blocks
-Version:    1.3
+Version:    1.4
 Release:    0
 Group:      Qt/Qt
 License:    LICENSE

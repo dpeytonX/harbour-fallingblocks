@@ -5,11 +5,19 @@
     <name>CoverPage</name>
     <message>
         <source>In Progress</source>
-        <translation>中止</translation>
+        <translation>実行中</translation>
     </message>
     <message>
         <source>Falling Blocks</source>
         <translation>Falling Blocks</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished">スコア</translation>
+    </message>
+    <message>
+        <source>Lives</source>
+        <translation type="unfinished">ライフ</translation>
     </message>
 </context>
 <context>
@@ -46,16 +54,24 @@
         <translation>ヘルプ</translation>
     </message>
     <message>
-        <source>New Game</source>
-        <translation>新規なゲーム</translation>
-    </message>
-    <message>
         <source>In Progress</source>
-        <translation>実行中</translation>
+        <translation>つづく</translation>
     </message>
     <message>
         <source>Settings</source>
         <translation>設定</translation>
+    </message>
+    <message>
+        <source>Quit Game</source>
+        <translation>やめる</translation>
+    </message>
+    <message>
+        <source>Catch as many falling blocks as possible</source>
+        <translation>できるだけブロックを捕まえて行きましょう</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>アップリについて</translation>
     </message>
 </context>
 <context>
@@ -125,7 +141,7 @@
     </message>
     <message>
         <source>Application Default</source>
-        <translation type="unfinished">アップリの規定</translation>
+        <translation>アップリの規定</translation>
     </message>
 </context>
 <context>

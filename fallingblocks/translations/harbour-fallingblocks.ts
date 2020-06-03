@@ -11,6 +11,14 @@
         <source>Falling Blocks</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Score</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lives</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Help</name>
@@ -46,7 +54,7 @@
         <translation></translation>
     </message>
     <message>
-        <source>New Game</source>
+        <source>Quit Game</source>
         <translation></translation>
     </message>
     <message>
@@ -55,6 +63,14 @@
     </message>
     <message>
         <source>Settings</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Catch as many falling blocks as possible</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>About</source>
         <translation></translation>
     </message>
 </context>
@@ -125,7 +141,7 @@
     </message>
     <message>
         <source>Application Default</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

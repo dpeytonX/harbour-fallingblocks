@@ -1,6 +1,16 @@
 .pragma library
 
 var appName="harbour-fallingblocks"
+var appIcon = "qrc:///images/desktop.png"
+var appTitle = "Falling Blocks"
+var appAuthors = ["Dametrious Peyton"]
+var appCopyright = "Dametrious Peyton"
+var appLicense = ["GPLv3"]
+var appProjectInfo = ["https://github.com/prplmnky/harbour-fallingblocks",
+                      "https://www.transifex.com/projects/p/harbour-fallingblocks",
+                      "https://github.com/prplmnky/sailfish-widgets"]
+var appVersion = "1.4.0"
+var appYear = "2020"
 
 // Animation rate controls the frame rate
 var animationRate = 150

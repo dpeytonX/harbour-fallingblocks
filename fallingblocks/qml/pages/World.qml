@@ -10,6 +10,7 @@ import harbour.fallingblocks.QmlLogger 2.0
 Page {
     property alias gameStatus: game
     property alias lives: player.lives
+    property alias scores: levelStatus.score
     property bool forceBackNavigation: false
     property bool initialized: false
     property int currentSpeed: UIConstants.speed

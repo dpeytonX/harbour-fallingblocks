@@ -36,6 +36,7 @@ OTHER_FILES += rpm/harbour-fallingblocks.changes.in \
     rpm/harbour-fallingblocks.yaml \
     translations/*.ts \
     harbour-fallingblocks.desktop \
+    harbour/fallingblocks/SailfishWidgets/armv7hl/SailfishWidgets/Components/*.qml \
     lib/libapplicationsettings.so \
     lib/libcore.so.1 \
     lib/liblanguage.so
