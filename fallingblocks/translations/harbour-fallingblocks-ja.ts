@@ -42,6 +42,30 @@
         <source>Help</source>
         <translation>ヘルプ</translation>
     </message>
+    <message>
+        <source>Slowest block</source>
+        <translation type="unfinished">最も鈍い</translation>
+    </message>
+    <message>
+        <source>Slightly faster</source>
+        <translation type="unfinished">中位の速度</translation>
+    </message>
+    <message>
+        <source>Fastest</source>
+        <translation type="unfinished">最も速い</translation>
+    </message>
+    <message>
+        <source>Takes a life</source>
+        <translation type="unfinished">命を奪う</translation>
+    </message>
+    <message>
+        <source>Grants invincibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scoring</source>
+        <translation type="unfinished">点の表</translation>
+    </message>
 </context>
 <context>
     <name>Main</name>
@@ -76,29 +100,6 @@
     <message>
         <source>About</source>
         <translation>アップリについて</translation>
-    </message>
-</context>
-<context>
-    <name>Score</name>
-    <message>
-        <source>Scoring</source>
-        <translation>点の表</translation>
-    </message>
-    <message>
-        <source>Slowest block</source>
-        <translation>最も鈍い</translation>
-    </message>
-    <message>
-        <source>Slightly faster</source>
-        <translation>中位の速度</translation>
-    </message>
-    <message>
-        <source>Fastest</source>
-        <translation>最も速い</translation>
-    </message>
-    <message>
-        <source>Takes a life</source>
-        <translation>命を奪う</translation>
     </message>
 </context>
 <context>

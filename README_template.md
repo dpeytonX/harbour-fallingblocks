@@ -25,7 +25,6 @@ TODO:
 <li> Add High Score
 <li> Add Negative Score Count / Score Mode
 <li> Save game / add Save button to title card
-<li> Add invicibility block
 </ul>
 
 $$FOOTER$$

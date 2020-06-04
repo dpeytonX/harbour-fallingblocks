@@ -75,5 +75,8 @@ TRANSLATIONS += translations/harbour-fallingblocks.ts \
 RESOURCES += \
     images.qrc
 
+DISTFILES += \
+    harbour/fallingblocks/FallingBlocks/Sprites/StarBlock.qml
+
 
 

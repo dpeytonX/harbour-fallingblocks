@@ -24,7 +24,8 @@ var blockNameEasy = "EasyBlock"
 var blockNameMedium = "MediumBlock"
 var blockNameHard = "HardBlock"
 var blockNameEvil = "EvilBlock"
-var blocks = [blockNameEasy, blockNameMedium, blockNameHard, blockNameEvil]
+var blockNameStar = "StarBlock"
+var blocks = [blockNameEasy, blockNameMedium, blockNameHard, blockNameEvil, blockNameStar]
 
 // Collision controls when to check blocks for collisions
 // It should be some int value < animationRate
@@ -35,6 +36,7 @@ var pointsEasy = 100
 var pointsMedium = 500
 var pointsHard = 1000
 var pointsEvil = -500
+var pointsStar = 5000
 
 // Lives
 var settingsLivesDefault = 0
@@ -63,7 +65,8 @@ var blockEasySpeedFactor = 1
 var blockMediumSpeedFactor = 2
 var blockHardSpeedFactor = 3
 var blockEvilSpeedFactor = 3
-var blockSpeedFactors = [blockEasySpeedFactor, blockMediumSpeedFactor, blockHardSpeedFactor, blockEvilSpeedFactor]
+var blockStarSpeedFactor = 4
+var blockSpeedFactors = [blockEasySpeedFactor, blockMediumSpeedFactor, blockHardSpeedFactor, blockEvilSpeedFactor, blockStarSpeedFactor]
 // Interval is the spawning rate (in ms)
 var intervalEasy = 1200
 var intervalMedium = 1000
@@ -72,11 +75,15 @@ var intervalExtreme = 400
 var intervalSuper = 300
 var interval = intervalEasy
 var intervals = [intervalEasy, intervalMedium, intervalHard, intervalExtreme, intervalSuper]
-var spawnRatioEasy = [0.4, 0.3, 0.3, 0]
-var spawnRatioMedium = [0.25, 0.25, 0.25, 0.25]
-var spawnRatioHard = [0.1, 0.25, 0.15, 0.5]
-var spawnRatioExtreme = [0.1, 0.25, 0.15, 0.5]
-var spawnRatioSuper = [0.05, 0.15, 0.2, 0.6]
+
+var invincibilityInterval = 500
+var invincibilityDuration = 10000
+
+var spawnRatioEasy = [0.4, 0.3, 0.3, 0, 0]
+var spawnRatioMedium = [0.25, 0.25, 0.25, 0.25, 0]
+var spawnRatioHard = [0.1, 0.25, 0.15, 0.5, 0]
+var spawnRatioExtreme = [0.1, 0.15, 0.2, 0.5, 0.05]
+var spawnRatioSuper = [0.08, 0.1, 0.2, 0.6, 0.02]
 var spawnRatios = [spawnRatioEasy, spawnRatioMedium, spawnRatioHard, spawnRatioExtreme, spawnRatioSuper]
 
 var speed = levelEasySpeed
@@ -84,6 +91,7 @@ var speedEasy = speed * blockEasySpeedFactor
 var speedMedium = speed * blockMediumSpeedFactor
 var speedHard = speed * blockHardSpeedFactor
 var speedEvil = speed * blockEvilSpeedFactor
+var speedStar = speed * blockStarSpeedFactor
 
 
 // Scoring

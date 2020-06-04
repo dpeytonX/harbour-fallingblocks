@@ -2,6 +2,7 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Components 3.3
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Settings 3.3
+import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.JS 3.3
 import harbour.fallingblocks.FallingBlocks.Controllers 1.0
 import harbour.fallingblocks.FallingBlocks.Sprites 1.0
 import harbour.fallingblocks.FallingBlocks.JS 1.0
@@ -48,7 +49,24 @@ Page {
         }
     }
 
+    Heading {
+        anchors.centerIn: parent
+        id: gameOver
+        text: qsTr("Game Over")
+        horizontalAlignment: Text.AlignHCenter
+        visible: gameEnded
+        z: 1000
+    }
+
+    MouseArea {
+        onClicked: infoColumn.visible = !infoColumn.visible
+        anchors.fill: infoColumn
+        acceptedButtons: Qt.AllButtons
+        z: 1000
+    }
+
     Column {
+        id: infoColumn
         width: parent.width - Theme.paddingLarge * 2
         y: Theme.paddingLarge
         x: Theme.paddingLarge
@@ -80,7 +98,9 @@ Page {
                 return qsTr("Nightmare")
             }()
         }
+
     }
+
 
     CreationController {
         animate: game.gameStarted
@@ -100,9 +120,13 @@ Page {
             object.collision.triggeredOnStart = true
             object.collision.source = player
             object.collisionDetected.connect(function () {
-                levelStatus.score += object.points
-                if (lives != UIConstants.livesInfinite)
+                if(object.objectName === UIConstants.blockNameStar)
+                    levelStatus.invincible = true
+
+                levelStatus.score += levelStatus.invincible ? Math.abs(object.points) : object.points
+                if (lives != UIConstants.livesInfinite && !levelStatus.invincible)
                     lives -= object.objectName === UIConstants.blockNameEvil ? 1 : 0
+
                 object.animate = false
                 object.visible = false
                 object.destroy()
@@ -127,16 +151,39 @@ Page {
         onGameEndedChanged: forceBackNavigation = true
     }
 
-    Heading {
-        anchors.centerIn: parent
-        id: gameOver
-        text: qsTr("Game Over")
-        visible: gameEnded
-        z: 1000
-    }
-
     LevelController {
         id: levelStatus
+
+        Timer {
+            id: timer
+            repeat: true
+            interval: UIConstants.invincibilityInterval
+            triggeredOnStart: true
+            property int length: 0
+
+            onTriggered: {
+                if(length == 0)
+                    Console.info("Starting invincibility")
+
+                length += UIConstants.invincibilityInterval
+                player.color = ["yellow","gold","purple", "orange"][MathHelper.randomInt(0, 4)]
+                if(length >= UIConstants.invincibilityDuration) {
+                    stop()
+                    length = 0
+                    player.color = "white"
+                    levelStatus.invincible = false
+
+                    Console.info("Stopping invincibility")
+                }
+            }
+        }
+
+        onInvincibleChanged: {
+            Console.log("Player is invincible " + invincible)
+            if(invincible) {
+                timer.start()
+            }
+        }
 
         onLevelChanged: {
             currentSpeed = UIConstants.levelSpeeds[level]

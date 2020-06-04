@@ -13,15 +13,15 @@
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Lives</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>∞</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -41,6 +41,30 @@
     <message>
         <source>Help</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Slowest block</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Slightly faster</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Fastest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Takes a life</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grants invincibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scoring</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -75,29 +99,6 @@
     </message>
     <message>
         <source>About</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>Score</name>
-    <message>
-        <source>Scoring</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Slowest block</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Slightly faster</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Fastest</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Takes a life</source>
         <translation></translation>
     </message>
 </context>

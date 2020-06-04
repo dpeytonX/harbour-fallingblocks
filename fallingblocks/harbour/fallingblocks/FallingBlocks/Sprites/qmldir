@@ -9,3 +9,4 @@ HardBlock 1.0 HardBlock.qml
 FallingBlock 1.0 FallingBlock.qml
 LoggingBlock 1.0 LoggingBlock.qml
 PlayerBlock 1.0 PlayerBlock.qml
+StarBlock 1.0 StarBlock.qml
