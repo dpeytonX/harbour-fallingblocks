@@ -13,15 +13,15 @@
     </message>
     <message>
         <source>Score</source>
-        <translation type="unfinished">スコア</translation>
+        <translation>スコア</translation>
     </message>
     <message>
         <source>Lives</source>
-        <translation type="unfinished">ライフ</translation>
+        <translation>ライフ</translation>
     </message>
     <message>
         <source>∞</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -44,58 +44,58 @@
     </message>
     <message>
         <source>Slowest block</source>
-        <translation type="unfinished">最も鈍い</translation>
+        <translation>最も鈍い</translation>
     </message>
     <message>
         <source>Slightly faster</source>
-        <translation type="unfinished">中位の速度</translation>
+        <translation>中位の速度</translation>
     </message>
     <message>
         <source>Fastest</source>
-        <translation type="unfinished">最も速い</translation>
+        <translation>最も速い</translation>
     </message>
     <message>
         <source>Takes a life</source>
-        <translation type="unfinished">命を奪う</translation>
+        <translation>命を奪う</translation>
     </message>
     <message>
         <source>Grants invincibility</source>
-        <translation type="unfinished"></translation>
+        <translation>臨時に無敵さを寄付</translation>
     </message>
     <message>
         <source>Scoring</source>
-        <translation type="unfinished">点の表</translation>
+        <translation>点の表</translation>
     </message>
 </context>
 <context>
     <name>HighScore</name>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>レセット</translation>
     </message>
     <message>
         <source>High Scores</source>
-        <translation type="unfinished"></translation>
+        <translation>トップスコア</translation>
     </message>
     <message>
         <source>1.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>2.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>3.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>4.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>5.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -122,7 +122,7 @@
     </message>
     <message>
         <source>Quit Game</source>
-        <translation>やめる</translation>
+        <translation>ゲームをやめる</translation>
     </message>
     <message>
         <source>Catch as many falling blocks as possible</source>
@@ -134,7 +134,7 @@
     </message>
     <message>
         <source>High Scores</source>
-        <translation type="unfinished"></translation>
+        <translation>トップスコア</translation>
     </message>
 </context>
 <context>
@@ -169,7 +169,7 @@
     </message>
     <message>
         <source>Disable Page Navigation in Game</source>
-        <translation>ページナビを無効にする</translation>
+        <translation>ゲーム中にページナビを無効にする</translation>
     </message>
     <message>
         <source>Language</source>

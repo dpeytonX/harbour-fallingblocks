@@ -22,7 +22,6 @@ To get the latest updates you can always download this project and compile a bin
 
 TODO<br>
 <ul>
-<li> translations
 <li> rpm validate
 </ul>
 
