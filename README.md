@@ -20,10 +20,14 @@ To get the latest updates you can always download this project and compile a bin
   <li>Version 1.1</li>
 </ul>
 
-TODO:
+TODO<br>
 <ul>
-<li> Add High Score
-<li> Add Negative Score Count / Score Mode
+<li> translations
+<li> rpm validate
+</ul>
+
+TODO 1.5:<br>
+<ul>
 <li> Save game / add Save button to title card
 </ul>
 

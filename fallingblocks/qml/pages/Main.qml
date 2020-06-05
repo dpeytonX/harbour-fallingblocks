@@ -21,16 +21,21 @@ Page {
             }
 
             StandardMenuItem {
-                text: qsTr("Quit Game")
-                onClicked: quitGame()
-                enabled: inProgress
+                text: qsTr("Help")
+                onClicked: help.open()
+            }
+
+            StandardMenuItem {
+                text: qsTr("High Scores")
+                onClicked: pageStack.push(highScore)
             }
         }
 
         PushUpMenu {
             StandardMenuItem {
-                text: qsTr("Help")
-                onClicked: help.open()
+                text: qsTr("Quit Game")
+                onClicked: quitGame()
+                enabled: inProgress
             }
 
             StandardMenuItem {
@@ -54,6 +59,10 @@ Page {
 
         SettingsPage {
             id: settingsPage
+        }
+
+        HighScore {
+            id: highScore
         }
 
         AboutPage {

@@ -68,6 +68,37 @@
     </message>
 </context>
 <context>
+    <name>HighScore</name>
+    <message>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>High Scores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Main</name>
     <message>
         <source>Start</source>
@@ -100,6 +131,10 @@
     <message>
         <source>About</source>
         <translation>アップリについて</translation>
+    </message>
+    <message>
+        <source>High Scores</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

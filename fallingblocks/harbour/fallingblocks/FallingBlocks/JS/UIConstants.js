@@ -58,7 +58,7 @@ var levelEasySpeed = 10
 var levelMediumSpeed = 20
 var levelHardSpeed = 30
 var levelExtremeSpeed = 35
-var levelSuperSpeed = 40
+var levelSuperSpeed = 45
 var levelSpeeds = [levelEasySpeed, levelMediumSpeed, levelHardSpeed, levelExtremeSpeed, levelSuperSpeed]
 // Block Speed (or delta y)
 var blockEasySpeedFactor = 1
@@ -83,7 +83,7 @@ var spawnRatioEasy = [0.4, 0.3, 0.3, 0, 0]
 var spawnRatioMedium = [0.25, 0.25, 0.25, 0.25, 0]
 var spawnRatioHard = [0.1, 0.25, 0.15, 0.5, 0]
 var spawnRatioExtreme = [0.1, 0.15, 0.2, 0.5, 0.05]
-var spawnRatioSuper = [0.08, 0.1, 0.2, 0.6, 0.02]
+var spawnRatioSuper = [0.09, 0.1, 0.2, 0.6, 0.01]
 var spawnRatios = [spawnRatioEasy, spawnRatioMedium, spawnRatioHard, spawnRatioExtreme, spawnRatioSuper]
 
 var speed = levelEasySpeed
