@@ -18,8 +18,8 @@ Summary:    Falling Blocks
 Version:    1.4
 Release:    0
 Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+License:    GPLv3
+URL:        https://github.com/prplmnky/harbour-fallingblocks
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-fallingblocks.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
