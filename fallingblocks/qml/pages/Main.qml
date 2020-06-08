@@ -1,12 +1,14 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Components 3.3
+import harbour.fallingblocks.SailfishWidgets.armv7hl.SailfishWidgets.Utilities 3.3
+import harbour.fallingblocks.FallingBlocks.JS 1.0
 import harbour.fallingblocks.QmlLogger 2.0
 
-//TODO: change page header text on game status
 Page {
     property bool inProgress: false
     signal startNewGame(bool immediate)
+    signal quitGame
     signal goToWorld()
 
     SilicaListView {
@@ -24,8 +26,21 @@ Page {
             }
 
             StandardMenuItem {
-                text: qsTr("New Game")
-                onClicked: startNewGame(true)
+                text: qsTr("High Scores")
+                onClicked: pageStack.push(highScore)
+            }
+        }
+
+        PushUpMenu {
+            StandardMenuItem {
+                text: qsTr("Quit Game")
+                onClicked: quitGame()
+                enabled: inProgress
+            }
+
+            StandardMenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(aboutDialog)
             }
         }
 
@@ -44,6 +59,24 @@ Page {
 
         SettingsPage {
             id: settingsPage
+        }
+
+        HighScore {
+            id: highScore
+        }
+
+        AboutPage {
+            id: aboutDialog
+            description: qsTr("Catch as many falling blocks as possible") +
+            " BTC 3NeDGutmC7hc5Dv2cUX8YcvPWaUXZm3KAF"
+            icon: UIConstants.appIcon
+            application: UIConstants.appTitle + " " + UIConstants.appVersion
+            copyrightHolder: UIConstants.appCopyright
+            copyrightYear: UIConstants.appYear
+            contributors: UIConstants.appAuthors
+            licenses: UIConstants.appLicense
+            pageTitle: UIConstants.appTitle
+            projectLinks: UIConstants.appProjectInfo
         }
     }
 

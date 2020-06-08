@@ -12,6 +12,7 @@ Item {
     property bool autoDetermine: true
     property int score
     property int level
+    property bool invincible
 
     onScoreChanged: {
         if (!autoDetermine)

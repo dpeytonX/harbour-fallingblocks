@@ -5,11 +5,23 @@
     <name>CoverPage</name>
     <message>
         <source>In Progress</source>
-        <translation>中止</translation>
+        <translation>実行中</translation>
     </message>
     <message>
         <source>Falling Blocks</source>
         <translation>Falling Blocks</translation>
+    </message>
+    <message>
+        <source>Score</source>
+        <translation>スコア</translation>
+    </message>
+    <message>
+        <source>Lives</source>
+        <translation>ライフ</translation>
+    </message>
+    <message>
+        <source>∞</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -30,6 +42,61 @@
         <source>Help</source>
         <translation>ヘルプ</translation>
     </message>
+    <message>
+        <source>Slowest block</source>
+        <translation>最も鈍い</translation>
+    </message>
+    <message>
+        <source>Slightly faster</source>
+        <translation>中位の速度</translation>
+    </message>
+    <message>
+        <source>Fastest</source>
+        <translation>最も速い</translation>
+    </message>
+    <message>
+        <source>Takes a life</source>
+        <translation>命を奪う</translation>
+    </message>
+    <message>
+        <source>Grants invincibility</source>
+        <translation>臨時に無敵さを寄付</translation>
+    </message>
+    <message>
+        <source>Scoring</source>
+        <translation>点の表</translation>
+    </message>
+</context>
+<context>
+    <name>HighScore</name>
+    <message>
+        <source>Reset</source>
+        <translation>レセット</translation>
+    </message>
+    <message>
+        <source>High Scores</source>
+        <translation>トップスコア</translation>
+    </message>
+    <message>
+        <source>1.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>2.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>3.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>4.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>5.</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>Main</name>
@@ -46,39 +113,28 @@
         <translation>ヘルプ</translation>
     </message>
     <message>
-        <source>New Game</source>
-        <translation>新規なゲーム</translation>
-    </message>
-    <message>
         <source>In Progress</source>
-        <translation>実行中</translation>
+        <translation>つづく</translation>
     </message>
     <message>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
-</context>
-<context>
-    <name>Score</name>
     <message>
-        <source>Scoring</source>
-        <translation>点の表</translation>
+        <source>Quit Game</source>
+        <translation>ゲームをやめる</translation>
     </message>
     <message>
-        <source>Slowest block</source>
-        <translation>最も鈍い</translation>
+        <source>Catch as many falling blocks as possible</source>
+        <translation>できるだけブロックを捕まえて行きましょう</translation>
     </message>
     <message>
-        <source>Slightly faster</source>
-        <translation>中位の速度</translation>
+        <source>About</source>
+        <translation>アップリについて</translation>
     </message>
     <message>
-        <source>Fastest</source>
-        <translation>最も速い</translation>
-    </message>
-    <message>
-        <source>Takes a life</source>
-        <translation>命を奪う</translation>
+        <source>High Scores</source>
+        <translation>トップスコア</translation>
     </message>
 </context>
 <context>
@@ -113,7 +169,7 @@
     </message>
     <message>
         <source>Disable Page Navigation in Game</source>
-        <translation>ページナビを無効にする</translation>
+        <translation>ゲーム中にページナビを無効にする</translation>
     </message>
     <message>
         <source>Language</source>
@@ -125,7 +181,7 @@
     </message>
     <message>
         <source>Application Default</source>
-        <translation type="unfinished">アップリの規定</translation>
+        <translation>アップリの規定</translation>
     </message>
 </context>
 <context>

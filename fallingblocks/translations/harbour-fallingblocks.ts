@@ -11,6 +11,18 @@
         <source>Falling Blocks</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Score</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Lives</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>∞</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>Help</name>
@@ -30,6 +42,61 @@
         <source>Help</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Slowest block</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Slightly faster</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Fastest</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Takes a life</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Grants invincibility</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Scoring</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>HighScore</name>
+    <message>
+        <source>Reset</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>High Scores</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>1.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>2.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>3.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>4.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>5.</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>Main</name>
@@ -46,7 +113,7 @@
         <translation></translation>
     </message>
     <message>
-        <source>New Game</source>
+        <source>Quit Game</source>
         <translation></translation>
     </message>
     <message>
@@ -57,27 +124,16 @@
         <source>Settings</source>
         <translation></translation>
     </message>
-</context>
-<context>
-    <name>Score</name>
     <message>
-        <source>Scoring</source>
+        <source>Catch as many falling blocks as possible</source>
         <translation></translation>
     </message>
     <message>
-        <source>Slowest block</source>
+        <source>About</source>
         <translation></translation>
     </message>
     <message>
-        <source>Slightly faster</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Fastest</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Takes a life</source>
+        <source>High Scores</source>
         <translation></translation>
     </message>
 </context>
@@ -125,7 +181,7 @@
     </message>
     <message>
         <source>Application Default</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -2,4 +2,7 @@
 
 TEMPLATE=subdirs
 SUBDIRS = fallingblocks
-OTHER_FILES += rpm/*
+OTHER_FILES += rpm/* README_template.md README.md
+
+DISTFILES += \
+    fallingblocks/qml/pages/HighScore.qml
